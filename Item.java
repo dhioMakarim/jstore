@@ -7,54 +7,83 @@
  */
 public class Item
 {
-    // instance variables - replace the example below with your own
-    private int x;
-    protected int id;
-    protected String name;
-    protected int stock;
-    protected int price;
-    protected String category;
-    
+    private int id;
+    private String name;
+    private int stock;
+    private int price;
+    private String category;
+    private Supplier supplier;
+       
     /**
      * Constructor for objects of class Item
      */
-    public Item()
+    public Item(int id,
+        String name,
+        int stock,
+        int price,
+        String category,
+        Supplier supplier)
     {
-        // initialise instance variables
-        x = 0;
+        this.id=id;
+        this.name=name;
+        this.stock=stock;
+        this.price=price;
+        this.category=category;
+        this.supplier=supplier;        
     }
     
-    public int getId(){
-        return 0;
+    public int getId()
+    {
+        return id;
     }
-    public String getName(){
-        return "";
+    public String getName()
+    {
+        return name;
     }
-    public int getStock(){
-        return 0;
+    public int getStock()
+    {
+        return stock;
     }
-    public int getPrice(){
-        return 0;
+    public int getPrice()
+    {
+        return price;
     }
-    public String getCategory(){
-        return "";
+    public String getCategory()
+    {
+        return category;
     }
-    public int setId(int id){
-        return 0;
+    public Supplier getSupplier()
+    {
+        return supplier;
     }
-    public String setName(String name){
-        return "";
+    public void setId(int id)
+    {
+        this.id=id;
     }
-    public int setStock(int stock){
-        return 0;
+    public void setName(String name)
+    {
+        this.name=name;
     }
-    public int setPrice(int price){
-        return 0;
+    public void setStock(int stock)
+    {
+        this.stock=stock;
     }
-    public String setCategory(String category){
-        return "";
+    public void setPrice(int price)
+    {
+        this.price=price;
     }
-    
+    public void setCategory(String category)
+    {
+        this.category=category;
+    }
+    public void setSupplier(Supplier supplier)
+    {
+        this.supplier=supplier;   
+    }
+    public void printData()
+    {
+        System.out.println("nama item: " + name);
+    }
     /**
      * An example of a method - replace this comment with your own
      *
@@ -64,6 +93,6 @@ public class Item
     public int sampleMethod(int y)
     {
         // put your code here
-        return x + y;
+        return y;
     }
 }

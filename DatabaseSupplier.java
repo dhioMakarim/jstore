@@ -1,40 +1,39 @@
 
 /**
- * Write a description of class DatabaseItem here.
+ * Write a description of class DatabaseSupplier here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class DatabaseItem
+public class DatabaseSupplier
 {
     // instance variables - replace the example below with your own
-    
-    private String[] listItem;
-    private Item item;
-    
+    private String[] listString;
+    private Supplier supplier;
+
     /**
-     * Constructor for objects of class DatabaseItem
+     * Constructor for objects of class DatabaseSupplier
      */
-    public DatabaseItem()
+    public DatabaseSupplier()
     {
         // initialise instance variables
         
     }
-    public boolean addItem(Item item)
+    public boolean addSupplier(Supplier supplier)
     {
         return false;
     }
-    public boolean removeItem(Item item)
+    public void removeSupplier(Supplier supplier)
     {
-        return false;
+        
     }
-    public Item getItem()
+    public Supplier getSupplier()
     {
-        return item;
+        return supplier;
     }
-    public String[] getItemDatabase()
+    public String[] getListSupplier()
     {
-        return listItem;
+        return listString;
     }
     /**
      * An example of a method - replace this comment with your own
@@ -45,6 +44,6 @@ public class DatabaseItem
     public int sampleMethod(int y)
     {
         // put your code here
-        return  y;
+        return y;
     }
 }
