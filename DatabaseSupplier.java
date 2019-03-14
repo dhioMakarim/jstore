@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class DatabaseSupplier here.
+ * Data dari supplier keseluruhan dari toko.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhio Makarim Utomo
+ * @version 0.1.2 28/02/2019
  */
 public class DatabaseSupplier
 {
@@ -30,6 +30,7 @@ public class DatabaseSupplier
     public Supplier getSupplier()
     {
         return supplier;
+        //menunjukkan data supplier
     }
     public String[] getListSupplier()
     {

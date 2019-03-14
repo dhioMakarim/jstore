@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Item here.
+ * Data item yang di toko.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhio Makarim Utomo
+ * @version 0.1.2 28/02/2019
  */
 public class Item
 {
@@ -11,18 +11,20 @@ public class Item
     private String name;
     private int stock;
     private int price;
-    private String category;
+    private ItemCategory category;
+    private ItemStatus status;
     private Supplier supplier;
        
     /**
-     * Constructor for objects of class Item
+     * Constructor untuk object dari class Item
      */
     public Item(int id,
         String name,
         int stock,
         int price,
-        String category,
-        Supplier supplier)
+        ItemCategory category,
+        Supplier supplier,
+        ItemStatus status)
     {
         this.id=id;
         this.name=name;
@@ -32,57 +34,116 @@ public class Item
         this.supplier=supplier;        
     }
     
+    /**
+     * Metode untuk mendapatkan id barang
+     */
     public int getId()
     {
         return id;
     }
+    /**
+     * Metode untuk mendapatkan nama barang
+     */
     public String getName()
     {
         return name;
     }
+    /**
+     * Metode untuk mendapatkan stok barang
+     */
     public int getStock()
     {
         return stock;
     }
+    /**
+     * Metode untuk mendapatkan harga barang
+     */
     public int getPrice()
     {
         return price;
     }
-    public String getCategory()
+    /**
+     * Metode untuk mendapatkan kategori barang
+     */
+    public ItemCategory getCategory()
     {
         return category;
     }
+    /**
+     * Metode untuk mendapatkan kategori barang
+     */
+    public ItemStatus getStatus()
+    {
+        return status;
+    }
+    /**
+     * Metode untuk mendapatkan supplier barang
+     * Menyambung ke class Supplier
+     */
     public Supplier getSupplier()
     {
         return supplier;
     }
+    /**
+     * Metode untuk mengisi id barang
+     */
     public void setId(int id)
     {
         this.id=id;
     }
+    /**
+     * Metode untuk mengisi nama barang
+     */
     public void setName(String name)
     {
         this.name=name;
     }
+    /**
+     * Metode untuk mengisi stok barang
+     */
     public void setStock(int stock)
     {
         this.stock=stock;
     }
+    /**
+     * Metode untuk mengisi harga barang
+     */
     public void setPrice(int price)
     {
         this.price=price;
     }
-    public void setCategory(String category)
+    /**
+     * Metode untuk mengisi kategori barang
+     */
+    public void setCategory(ItemCategory category)
     {
         this.category=category;
     }
+    public void setStatus(ItemStatus status)
+    {
+        this.status=status;
+    }
+    /**
+     * Metode untuk mengisi supplier barang
+     * Menyambung ke class Supplier
+     */
     public void setSupplier(Supplier supplier)
     {
         this.supplier=supplier;   
     }
+    /**
+     * Metode untuk mencetak nama item
+     * 
+     */
     public void printData()
     {
-        System.out.println("nama item: " + name);
+        System.out.println("==============ITEM==============");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Stok: " + stock);
+        System.out.println("Kategori: " + category);
+        System.out.println("Status: " + status);
+        System.out.println("Supplier: " + supplier.getName());
     }
     /**
      * An example of a method - replace this comment with your own

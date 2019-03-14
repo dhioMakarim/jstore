@@ -1,36 +1,37 @@
 
 /**
- * Write a description of class DatabaseItem here.
+ * Database item yg di toko.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhio Makarim Utomo
+ * @version 0.1.2 28/02/2019
  */
 public class DatabaseItem
 {
     // instance variables - replace the example below with your own
     
     private String[] listItem;
-    private Item item;
+    private static Item itemDB;
     
     /**
-     * Constructor for objects of class DatabaseItem
+     * Constructor untuk objects dari class DatabaseItem
      */
     public DatabaseItem()
     {
         // initialise instance variables
         
     }
-    public boolean addItem(Item item)
+    public static boolean addItem(Item item)
     {
+        itemDB = item;
         return false;
     }
     public boolean removeItem(Item item)
     {
         return false;
     }
-    public Item getItem()
+    public static Item getItem()
     {
-        return item;
+        return itemDB;
     }
     public String[] getItemDatabase()
     {

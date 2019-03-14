@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Supplier here.
+ * Data supplier dari toko.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhio Makarim Utomo
+ * @version 0.1.2 28/02/2019
  */
 public class Supplier
 {
@@ -13,7 +13,7 @@ public class Supplier
     private String phoneNumber;
     private Location location;
     /**
-     * Constructor for objects of class Supplier
+     * Constructor untuk objects dari class Supplier
      */
     public Supplier(int id,
         String name,
@@ -27,49 +27,90 @@ public class Supplier
         this.phoneNumber=phoneNumber;
         this.location=location;
     }
+    /**
+     * Metode untuk mendapatkan id supplier
+     */
     public int getId()
     {
         return id;
     }
+    /**
+     * Metode untuk mendapatkan nama supplier
+     */
     public String getName()
     {
         return name;
     }
+    /**
+     * Metode untuk mendapatkan email supplier
+     */
     public String getEmail()
     {
         return email;
     }
+    /**
+     * Metode untuk mendapatkan nomor telpon supplier
+     */
     public String getPhoneNumber()
     {
         return phoneNumber;
     }
+    /**
+     * Metode untuk mendapatkan lokasi supplier
+     * Menyambung ke class Location
+     */
     public Location getLocation()
     {
         return location;
     }
+    /**
+     * Metode untuk mengisi id supplier
+     */
     public void setId(int id)
     {
         this.id=id;
     }
+    /**
+     * Metode untuk mengisi nama supplier
+     */
     public void setName(String name)
     {
         this.name=name;
     }
+    /**
+     * Metode untuk mengisi email supplier
+     */
     public void setEmail(String email)
     {
         this.email=email;
     }
+    /**
+     * Metode untuk mengisi nomor telpon supplier
+     */
     public void setPhoneNumber(String phoneNumber)
     {
         this.phoneNumber=phoneNumber;
     }
+    /**
+     * Metode untuk mengisi lokasi supplier
+     * Menyambung ke class Location
+     */
     public void setLocation(Location location)
     {
         this.location=location;
     }
+    /**
+     * Metode untuk mencetak nama supplier
+     * 
+     */
     public void printData()
     {
-        System.out.println("supplier: " + name);
+        System.out.println("============SUPPLIER============");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("No. Telp: " + phoneNumber);
+        System.out.println("Lokasi: " + location.getCity());
     }
     /**
      * An example of a method - replace this comment with your own

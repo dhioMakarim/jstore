@@ -2,8 +2,8 @@
 /**
  * Write a description of class JStore here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhio Makarim Utomo
+ * @version 0.1.2 28/02/2019
  */
 public class JStore
 {
@@ -12,9 +12,28 @@ public class JStore
     
     
     
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
+        Location rumah = new Location("Jawa Barat", "di jawa bagian barat", "Depok");
+        Supplier mbuh = new Supplier(02, "Dhio", "dhio.makarim@gmail.com", "087889871914", rumah);
         
+        rumah.printData();
+        mbuh.printData();
         
+        Transaction transaksi = new Transaction();
+        transaksi.orderNewItem(mbuh);
+        transaksi.orderSecondItem(mbuh);
+        transaksi.orderRefurbishedItem(mbuh);
+        transaksi.sellItemPaid(DatabaseItem.getItem());
+        transaksi.sellItemUnpaid(DatabaseItem.getItem());
+        transaksi.sellItemInstallment(DatabaseItem.getItem());
+        //Item opoiki = new Item(02, "sebuah benda", 10, 14000, "benda nyata", mbuh);
+        //Invoice helep = new Invoice(02, opoiki, "06/03/2019", 28000);
+        //mbuh.printData();
+        //mbuh.setName("Fariz");
+        //mbuh.printData();
+        //opoiki.printData();
+        //DatabaseItem.addItem(opoiki);
     }
     /**
      * Constructor for objects of class JStore

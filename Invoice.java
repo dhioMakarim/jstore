@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Invoice here.
+ * Data invoice dari toko.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhio Makarim Utomo
+ * @version 0.1.2 28/02/2019
  */
 public class Invoice
 {
@@ -11,9 +11,11 @@ public class Invoice
     private Item item;
     private String date;
     private int totalPrice;
+    private int totalItem;
+    private InvoiceStatus status;
 
     /**
-     * Constructor for objects of class Invoice
+     * Constructor untuk object dari class Invoice
      */
     public Invoice(int id,
         Item item,
@@ -24,43 +26,102 @@ public class Invoice
         this.item=item;
         this.date=date;
         this.totalPrice=totalPrice;
-        
+        this.totalItem=totalItem;
+        this.status=status;
     }
+    /**
+     * Metode untuk mendapatkan id invoice
+     */
     public int getId()
     {
         return id;
     }
+    /**
+     * Metode untuk mendapatkan barang yang diinvoice
+     * Menyambung ke class Item
+     */
     public Item getItem()
     {
         return item;
     }
+    /**
+     * Metode untuk mendapatkan tanggal invoice
+     */
     public String getDate()
     {
         return date;
     }
+    /**
+     * Metode untuk mendapatkan total harga yang diinvoice
+     */
     public int getTotalPrice()
     {
         return totalPrice;
     }
+    /**
+     * Metode untuk mendapatkan total harga yang diinvoice
+     */
+    public int getTotalItem()
+    {
+        return totalItem;
+    }
+    /**
+     * Metode untuk mendapatkan total harga yang diinvoice
+     */
+    public InvoiceStatus getInvoiceStatus()
+    {
+        return status;
+    }
+    /**
+     * Metode untuk mengisi id invoice
+     */
     public void setId(int id)
     {
         this.id=id;
     }
+    /**
+     * Metode untuk mengisi barang yang diinvoice
+     * Menyambung ke class Item
+     */
     public void setItem(Item item)
     {
         this.item=item;
     }
+    /**
+     * Metode untuk mengisi tanggal invoice
+     */
     public void setDate(String date)
     {
         this.date=date;
     }
+    /**
+     * Metode untuk mengisi total harga yang diinvoice
+     */
     public void setTotalPrice(int totalPrice)
     {
         this.totalPrice=totalPrice;
     }
+    public void setTotalItem(int totalItem)
+    {
+        this.totalItem=totalItem;
+    }
+    public void setInvoiceStatus(InvoiceStatus status)
+    {
+        this.status=status;
+    }
+    /**
+     * Metode untuk mencetak jumlah harga total
+     * 
+     */
     public void printData()
     {
-        System.out.println("jumlah harga: " + totalPrice);
+        System.out.println("=============INVOICE============");
+        System.out.println("ID: " + id);
+        System.out.println("Tanngal: " + date);
+        System.out.println("Item: " + item.getName());
+        System.out.println("Total Item: " + totalItem);
+        System.out.println("Total Harga: " + totalPrice);
+        System.out.println("Status: " + status);
     }
     /**
      * An example of a method - replace this comment with your own
