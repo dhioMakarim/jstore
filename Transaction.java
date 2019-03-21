@@ -9,7 +9,7 @@ public class Transaction
 {
     // instance variables - replace the example below with your own
     private int x;
-    private Supplier supplier;
+    private Item item;
     
     /**
      * Constructor for objects of class Transaction
@@ -20,99 +20,66 @@ public class Transaction
         x = 0;
     }
 
+    
     /**
      * An example of a method - replace this comment with your own
      *
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+    public void orderNewItem(Item item)
     {
-        // put your code here
-        return x + y;
+        Invoice obj1 = new Buy_Paid(1, item, "21-03-2019", 10, item.getPrice());
+        if(obj1 instanceof Sell_Paid)
+        {
+            System.out.println("Benar, Invoice Type adalah Sell_Paid");
+        }
+        else
+        {
+            System.out.println("Salah, Invoice Type bukan Sell_Paid");
+        }
+        System.out.println("--------ORDER NEW ITEM---------");
+        obj1.printData();
+        item.printData();
     }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void orderNewItem(Supplier supplier)
+    public void orderSecondItem(Item item)
     {
-        Item barang = new Item(1, "benda", 10, 5000, ItemCategory.Electronics, supplier, ItemStatus.New);
-        
-        DatabaseItem.addItem(barang);
-        
-        Invoice pembelian = new Invoice(1, barang, "14-Mar-19", barang.getPrice());
-        
-        barang.setStatus(ItemStatus.New);
-        
-        pembelian.setInvoiceStatus(InvoiceStatus.Paid);
-        System.out.println("==============ORDER NEW ITEM==============");
-        pembelian.printData();
-        barang.printData();
-        
+        Invoice obj2 = new Buy_Paid(2, item, "21-03-2019", 11, item.getPrice());
+               
+        System.out.println("--------ORDER SECOND ITEM---------");
+        obj2.printData();
+        item.printData();
     }
-    public void orderSecondItem(Supplier supplier)
+    public void orderRefurbishedItem(Item item)
     {
-        Item barang = new Item(1, "benda", 10, 5000, ItemCategory.Electronics, supplier, ItemStatus.Second);
+        Invoice obj3 = new Buy_Paid(3, item, "21-03-2019", 12, item.getPrice());
         
-        DatabaseItem.addItem(barang);
-        
-        Invoice pembelian = new Invoice(1, barang, "14-Mar-19", barang.getPrice());
-        
-        barang.setStatus(ItemStatus.Second);
-        
-        pembelian.setInvoiceStatus(InvoiceStatus.Paid);
-        System.out.println("==============ORDER SECOND ITEM==============");
-        pembelian.printData();
-        barang.printData();
-        
-    }
-    public void orderRefurbishedItem(Supplier supplier)
-    {
-        Item barang = new Item(1, "benda", 10, 5000, ItemCategory.Electronics, supplier, ItemStatus.Refurbished);
-        
-        DatabaseItem.addItem(barang);
-        
-        Invoice pembelian = new Invoice(1, barang, "14-Mar-19", barang.getPrice());
-        
-        barang.setStatus(ItemStatus.Refurbished);
-        
-        pembelian.setInvoiceStatus(InvoiceStatus.Paid);
-        System.out.println("==============ORDER REFURBISHED ITEM==============");
-        pembelian.printData();
-        barang.printData();
-        
+        System.out.println("--------ORDER REFURBISHED ITEM---------");
+        obj3.printData();
+        item.printData();
     }
     public void sellItemPaid(Item item)
     {
-        Invoice pembelian = new Invoice(1, item, "14-Mar-19", item.getPrice());
+        Invoice obj4 = new Sell_Paid(1, item, "21-03-2019", 14, item.getPrice());
         
-        pembelian.setInvoiceStatus(InvoiceStatus.Paid);
-        
-        item.setStatus(ItemStatus.Sold);
-        System.out.println("==============ITEM PAID==============");
-        pembelian.printData();
+        System.out.println("--------PAID ITEM---------");
+        obj4.printData();
+        item.printData();
     }
     public void sellItemUnpaid(Item item)
     {
-        Invoice pembelian = new Invoice(1, item, "14-Mar-19", item.getPrice());
+        Invoice obj5 = new Sell_Unpaid(2, item, "21-03-2019", 14, item.getPrice(), "30-03-2019");
         
-        pembelian.setInvoiceStatus(InvoiceStatus.Unpaid);
-        
-        item.setStatus(ItemStatus.Sold);
-        System.out.println("==============ITEM UNPAID==============");
-        pembelian.printData();
+        System.out.println("--------UNPAID ITEM---------");
+        obj5.printData();
+        item.printData();
     }
     public void sellItemInstallment(Item item)
     {
-        Invoice pembelian = new Invoice(1, item, "14-Mar-19", item.getPrice());
+        Invoice obj6 = new Sell_Installment(3, item, "21-03-2019", 14, item.getPrice(), 5);
         
-        pembelian.setInvoiceStatus(InvoiceStatus.Installment);
-        
-        item.setStatus(ItemStatus.Sold);
-        System.out.println("==============INSTALLMENT ITEM==============");
-        pembelian.printData();
+        System.out.println("--------INSTALLMENT ITEM---------");
+        obj6.printData();
+        item.printData();
     }
 }

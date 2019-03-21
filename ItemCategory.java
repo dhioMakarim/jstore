@@ -7,13 +7,20 @@
  */
 public enum ItemCategory
 {
-    Electronics, Furniture, Installment;
-    
-    //public String toString()
-    //{
-     //   return "";
-    //}
-    
-    
+    Electronics("Electronics"), 
+    Furniture("Furniture"), 
+    Installment("Installment");
+
+    private String category;
+
+    ItemCategory(String category)
+    {
+        this.category = category;
+    }
+
+    public String toString()
+    {
+        return category;
+    }
 }
 

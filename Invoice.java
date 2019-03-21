@@ -5,14 +5,16 @@
  * @author Dhio Makarim Utomo
  * @version 0.1.2 28/02/2019
  */
-public class Invoice
+public abstract class Invoice
 {
     private int id;
     private Item item;
     private String date;
-    private int totalPrice;
     private int totalItem;
+    protected int totalPrice;
+    
     private InvoiceStatus status;
+    private InvoiceType type;
 
     /**
      * Constructor untuk object dari class Invoice
@@ -20,14 +22,16 @@ public class Invoice
     public Invoice(int id,
         Item item,
         String date,
+        int totalItem,
         int totalPrice)
     {
         this.id=id;
         this.item=item;
         this.date=date;
-        this.totalPrice=totalPrice;
         this.totalItem=totalItem;
+        this.totalPrice=totalPrice;
         this.status=status;
+        this.type=type;
     }
     /**
      * Metode untuk mendapatkan id invoice
@@ -72,6 +76,10 @@ public class Invoice
     {
         return status;
     }
+    public InvoiceType getInvoiceType()
+    {
+        return type;
+    }
     /**
      * Metode untuk mengisi id invoice
      */
@@ -113,8 +121,8 @@ public class Invoice
      * Metode untuk mencetak jumlah harga total
      * 
      */
-    public void printData()
-    {
+    public abstract void printData();
+    /*{
         System.out.println("=============INVOICE============");
         System.out.println("ID: " + id);
         System.out.println("Tanngal: " + date);
@@ -122,16 +130,7 @@ public class Invoice
         System.out.println("Total Item: " + totalItem);
         System.out.println("Total Harga: " + totalPrice);
         System.out.println("Status: " + status);
-    }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return  y;
-    }
+        System.out.println("Type: " + type);
+    }*/
+
 }

@@ -16,14 +16,15 @@ public class JStore
     {
         Location rumah = new Location("Jawa Barat", "di jawa bagian barat", "Depok");
         Supplier mbuh = new Supplier(02, "Dhio", "dhio.makarim@gmail.com", "087889871914", rumah);
+        Item helep = new Item(02, "namaitem", 10, 12000, ItemCategory.Electronics, ItemStatus.New, mbuh);
         
         rumah.printData();
         mbuh.printData();
-        
+        DatabaseItem.addItem(helep);
         Transaction transaksi = new Transaction();
-        transaksi.orderNewItem(mbuh);
-        transaksi.orderSecondItem(mbuh);
-        transaksi.orderRefurbishedItem(mbuh);
+        transaksi.orderNewItem(DatabaseItem.getItem());
+        //transaksi.orderSecondItem(DatabaseItem.getItem());
+        //transaksi.orderRefurbishedItem(DatabaseItem.getItem());
         transaksi.sellItemPaid(DatabaseItem.getItem());
         transaksi.sellItemUnpaid(DatabaseItem.getItem());
         transaksi.sellItemInstallment(DatabaseItem.getItem());

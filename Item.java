@@ -23,14 +23,15 @@ public class Item
         int stock,
         int price,
         ItemCategory category,
-        Supplier supplier,
-        ItemStatus status)
+        ItemStatus status,
+        Supplier supplier)
     {
         this.id=id;
         this.name=name;
         this.stock=stock;
         this.price=price;
         this.category=category;
+        this.status=status;
         this.supplier=supplier;        
     }
     
