@@ -22,12 +22,12 @@ public class JStore
         mbuh.printData();
         DatabaseItem.addItem(helep);
         Transaction transaksi = new Transaction();
-        transaksi.orderNewItem(DatabaseItem.getItem());
+        transaksi.orderNewItem(helep);
         //transaksi.orderSecondItem(DatabaseItem.getItem());
         //transaksi.orderRefurbishedItem(DatabaseItem.getItem());
-        transaksi.sellItemPaid(DatabaseItem.getItem());
-        transaksi.sellItemUnpaid(DatabaseItem.getItem());
-        transaksi.sellItemInstallment(DatabaseItem.getItem());
+        transaksi.sellItemPaid(helep);
+        transaksi.sellItemUnpaid(helep);
+        transaksi.sellItemInstallment(helep);
         //Item opoiki = new Item(02, "sebuah benda", 10, 14000, "benda nyata", mbuh);
         //Invoice helep = new Invoice(02, opoiki, "06/03/2019", 28000);
         //mbuh.printData();
