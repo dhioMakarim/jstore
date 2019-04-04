@@ -7,83 +7,89 @@
  */
 public class Location
 {
+    // instance variables
     private String province;
     private String description;
     private String city;
 
     /**
-     * Constructor untuk objects dari class Location
+     * Constructor for objects of class Location
      */
-    public Location(String province,
-        String description,
-        String city)
+    public Location(String city, String province, String description)
     {
-        this.province=province;
-        this.description=description;
-        this.city=city;
+        // initialise instance variables
+        this.city = city;
+        this.province = province;
+        this.description = description;
     }
+
     /**
-     * Metode untuk mendapatkan provinsi lokasi supplier
+     * get location province
+     * @return    location's province
      */
     public String getProvince()
     {
         return province;
     }
+    
     /**
-     * Metode untuk mendapatkan deskripsi lokasi supplier
-     */
-    public String getDescription()
-    {
-        return description;
-    }
-    /**
-     * Metode untuk mendapatkan kota lokasi supplier
+     * get location city
+     * @return    location's city
      */
     public String getCity()
     {
         return city;
     }
+    
     /**
-     * Metode untuk mengisi provinsi lokasi supplier
+     * get location description
+     * @return    location's description
+     */
+    public String getDescription()
+    {
+        return description;
+    }
+    
+    /**
+     * set location province
+     * @param   province   location's province
      */
     public void setProvince(String province)
     {
-        this.province=province;
+        this.province = province;
     }
+    
     /**
-     * Metode untuk mengisi deskripsi lokasi supplier
+     * set location city
+     * @param   city   location's city
      */
-    public void setDescription(String Description)
+    public void setCity(String city)
     {
-        this.description=description;
+        this.city = city;
     }
+    
     /**
-     * Metode untuk mengisi kota lokasi supplier
+     * set location description
+     * @param   description   location's description
      */
-    public void setCity(String City)
+    public void setDescription(String description)
     {
-        this.city=city;
+        this.description = description;
     }
+    
     /**
-     * Metode untuk mencetak nama provinsi supplier
-     * 
+     * printing province data
      */
-    public void printData()
-    {
-        System.out.println("============LOCATION============");
-        System.out.println("Provinsi: " + province);
-        System.out.println("Kota: " + city);
-        System.out.println("Deskripsi: " + description);
-    }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return y;
+    public void printData(){
+        System.out.print("LOCATION");
+        System.out.println("");
+        System.out.print("Provinsi : ");
+        System.out.println(this.province);
+        System.out.print("Kota : ");
+        System.out.println(this.city);
+        System.out.print("Deskripsi");
+        System.out.println("");
+        System.out.print("Lokasi");
+        System.out.println("");
     }
 }

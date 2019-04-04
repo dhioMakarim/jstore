@@ -1,136 +1,146 @@
-
+import java.util.*;
 /**
  * Data invoice dari toko.
  *
  * @author Dhio Makarim Utomo
  * @version 0.1.2 28/02/2019
  */
+
+
 public abstract class Invoice
 {
+    // instance variables
     private int id;
     private Item item;
-    private String date;
-    private int totalItem;
+    private Calendar date;
     protected int totalPrice;
-    
+    private int totalItem;
     private InvoiceStatus status;
     private InvoiceType type;
-
     /**
-     * Constructor untuk object dari class Invoice
+     * Constructor for objects of class Invoice
      */
-    public Invoice(int id,
-        Item item,
-        String date,
-        int totalItem,
-        int totalPrice)
+    //public Invoice(int id, Item item, Calendar date, int totalPrice, int totalItem,
+    //    InvoiceStatus status, InvoiceType type)
+    public Invoice(int id, Item item, int totalItem)
     {
-        this.id=id;
-        this.item=item;
-        this.date=date;
-        this.totalItem=totalItem;
-        this.totalPrice=totalPrice;
-        this.status=status;
-        this.type=type;
+       this.id = id;
+       this.item = item;
+       //this.date = date;
+       //this.totalPrice = totalPrice;
+       this.totalItem = totalItem;
+       this.status = status;
+       this.totalPrice = totalItem * item.getPrice();
     }
+
+    
     /**
-     * Metode untuk mendapatkan id invoice
+     * get invoice id
+     * @return      invoice's id
      */
-    public int getId()
+    public int getId() 
     {
         return id;
     }
+
     /**
-     * Metode untuk mendapatkan barang yang diinvoice
-     * Menyambung ke class Item
+     * set invoice id
+     * @param   id   invoice's id
      */
-    public Item getItem()
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    /**
+     * get invoice item
+     * @return      item's object
+     */
+    public Item getItem() 
     {
         return item;
     }
+
     /**
-     * Metode untuk mendapatkan tanggal invoice
+     * set invoice item
+     * @param   item   invoice's item
      */
-    public String getDate()
+    public void setItem(Item item)
+    {
+        this.item = item;
+    }
+
+    /**
+     * get invoice date
+     * @return      invoice's date
+     */
+    public Calendar getDate()
     {
         return date;
     }
+
     /**
-     * Metode untuk mendapatkan total harga yang diinvoice
+     * set invoice date
+     * @param   date   invoice's date
      */
-    public int getTotalPrice()
+    public void setDate(Calendar date) 
+    {
+        this.date = date;
+    }
+
+    /**
+     * get invoice total price
+     * @return      invoice's total price
+     */
+    public int getTotalPrice() 
     {
         return totalPrice;
     }
+
     /**
-     * Metode untuk mendapatkan total harga yang diinvoice
+     * set invoice total price
+     * @param   totalPrice   invoice's total price
      */
+    public void setTotalPrice(int totalPrice) 
+    {
+        this.totalPrice = totalPrice;
+    }
+    
     public int getTotalItem()
     {
         return totalItem;
     }
+
     /**
-     * Metode untuk mendapatkan total harga yang diinvoice
+     * set invoice total price
+     * @param   totalPrice   invoice's total price
      */
-    public InvoiceStatus getInvoiceStatus()
-    {
-        return status;
-    }
-    public InvoiceType getInvoiceType()
-    {
-        return type;
-    }
-    /**
-     * Metode untuk mengisi id invoice
-     */
-    public void setId(int id)
-    {
-        this.id=id;
-    }
-    /**
-     * Metode untuk mengisi barang yang diinvoice
-     * Menyambung ke class Item
-     */
-    public void setItem(Item item)
-    {
-        this.item=item;
-    }
-    /**
-     * Metode untuk mengisi tanggal invoice
-     */
-    public void setDate(String date)
-    {
-        this.date=date;
-    }
-    /**
-     * Metode untuk mengisi total harga yang diinvoice
-     */
-    public void setTotalPrice(int totalPrice)
-    {
-        this.totalPrice=totalPrice;
-    }
     public void setTotalItem(int totalItem)
     {
-        this.totalItem=totalItem;
+        this.totalItem = totalItem;
     }
+    
+    public abstract InvoiceStatus getInvoiceStatus();
+    
+    public abstract InvoiceType getInvoiceType();
+    
+    /**
+     * set invoice total price
+     * @param   totalPrice   invoice's total price
+     */
     public void setInvoiceStatus(InvoiceStatus status)
     {
-        this.status=status;
+        this.status = status;
     }
+    
     /**
-     * Metode untuk mencetak jumlah harga total
-     * 
+     * print all total price
      */
     public abstract void printData();
-    /*{
-        System.out.println("=============INVOICE============");
-        System.out.println("ID: " + id);
-        System.out.println("Tanngal: " + date);
-        System.out.println("Item: " + item.getName());
-        System.out.println("Total Item: " + totalItem);
-        System.out.println("Total Harga: " + totalPrice);
-        System.out.println("Status: " + status);
-        System.out.println("Type: " + type);
-    }*/
-
+    
+    public String toString()
+    {
+        return super.toString();
+    }
+    
 }

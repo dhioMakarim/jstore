@@ -7,40 +7,42 @@
  */
 public class Buy_Paid extends Invoice
 {
+    private static final InvoiceType INVOICE_TYPE = InvoiceType.Buy;
+    private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
     
-    private InvoiceType INVOICE_TYPE;
-    private InvoiceStatus INVOICE_STATUS;
-
     /**
      * Constructor for objects of class Buy_Paid
      */
-    public Buy_Paid(int id,
-        Item item,
-        String date,
-        int totalItem,
-        int totalPrice)
+    public Buy_Paid(int id, Item item, int totalItem)
     {
-        super(id, item, date, totalItem, totalPrice);
-        
+        super(id, item, totalItem);
+
     }
     
-    public InvoiceStatus getInvoiceStatus()
-    {
-        return InvoiceStatus.Paid;
+    public InvoiceStatus getInvoiceStatus(){
+        return this.INVOICE_STATUS;
     }
-    public InvoiceType getInvoiceType()
-    {
-        return InvoiceType.Buy;
+    
+    public InvoiceType getInvoiceType(){
+        return this.INVOICE_TYPE;
     }
-    public void printData()
+    
+    public void printData(){
+        System.out.println("============INVOICE BUY_PAID============");
+        System.out.print("INVOICE dan ID");
+        System.out.println("");
+        System.out.print("ID : ");
+        System.out.println(this.getId());
+        System.out.print("Total harga : ");
+        System.out.println(this.totalPrice);
+        System.out.print("Status: ");
+        System.out.println(getInvoiceStatus());
+        System.out.print("Type: ");
+        System.out.println(getInvoiceType());
+    }
+    
+    public String toString()
     {
-        System.out.println("=============BUY_PAID============");
-        System.out.println("ID: " + super.getId());
-        System.out.println("Tanngal: " + super.getDate());
-        System.out.println("Item: " + super.getItem());
-        System.out.println("Total Item: " + super.getTotalItem());
-        System.out.println("Total Harga: " + super.getTotalPrice());
-        System.out.println("Status: " + super.getInvoiceStatus());
-        System.out.println("Type: " + super.getInvoiceType());
+        return super.toString();
     }
 }

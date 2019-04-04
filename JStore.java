@@ -7,53 +7,29 @@
  */
 public class JStore
 {
-    // instance variables - replace the example below with your own
-    private int x;
     
-    
-    
-    public static void main(String[] args)
-    {
-        Location rumah = new Location("Jawa Barat", "di jawa bagian barat", "Depok");
-        Supplier mbuh = new Supplier(02, "Dhio", "dhio.makarim@gmail.com", "087889871914", rumah);
-        Item helep = new Item(02, "namaitem", 10, 12000, ItemCategory.Electronics, ItemStatus.New, mbuh);
-        
-        rumah.printData();
-        mbuh.printData();
-        DatabaseItem.addItem(helep);
-        Transaction transaksi = new Transaction();
-        transaksi.orderNewItem(helep);
-        //transaksi.orderSecondItem(DatabaseItem.getItem());
-        //transaksi.orderRefurbishedItem(DatabaseItem.getItem());
-        transaksi.sellItemPaid(helep);
-        transaksi.sellItemUnpaid(helep);
-        transaksi.sellItemInstallment(helep);
-        //Item opoiki = new Item(02, "sebuah benda", 10, 14000, "benda nyata", mbuh);
-        //Invoice helep = new Invoice(02, opoiki, "06/03/2019", 28000);
-        //mbuh.printData();
-        //mbuh.setName("Fariz");
-        //mbuh.printData();
-        //opoiki.printData();
-        //DatabaseItem.addItem(opoiki);
-    }
     /**
      * Constructor for objects of class JStore
      */
     public JStore()
     {
-        // initialise instance variables
-        x = 0;
+     
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
+    public static void main(String[] args)
     {
-        // put your code here
-        return x + y;
+       DatabaseItem databaseItem = new DatabaseItem();
+        
+       Location location1 = new Location("Jawa Barat", "Jawa Bagian Barat", "Depook");
+       Supplier supplier1 = new Supplier(17, "sebuah supplier", "sebuah.email@gmail.com", "080812127575", location1);
+     
+       Item item1 = new Item(02, "sebuah item", 9, ItemStatus.New, 20000, ItemCategory.Electronics, supplier1);
+       databaseItem.addItem(item1);
+       
+       Transaction transaction = new Transaction(databaseItem);
+       transaction.orderNewItem(item1);
+       transaction.sellItemPaid(item1);
+       transaction.sellItemUnpaid(item1);
+       transaction.sellItemInstallment(item1);
     }
 }

@@ -7,40 +7,52 @@
  */
 public class Sell_Paid extends Invoice
 {
-    
-    private InvoiceType INVOICE_TYPE;
-    private InvoiceStatus INVOICE_STATUS;
-
+    private static final InvoiceType INVOICE_TYPE = InvoiceType.Sell;
+    private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
+    private Customer customer;
     /**
      * Constructor for objects of class Sell_Paid
      */
-    public Sell_Paid(int id,
-        Item item,
-        String date,
-        int totalItem,
-        int totalPrice)
+    public Sell_Paid(int id, Item item, int totalItem, Customer customer)
     {
-        super(id, item, date, totalItem, totalPrice);
-        
+        super(id, item, totalItem);
+        this.customer = customer;
+    }
+
+    public InvoiceStatus getInvoiceStatus(){
+        return this.INVOICE_STATUS;
     }
     
-    public InvoiceStatus getInvoiceStatus()
-    {
-        return InvoiceStatus.Paid;
+    public InvoiceType getInvoiceType(){
+        return this.INVOICE_TYPE;
     }
-    public InvoiceType getInvoiceType()
+    
+    public Customer customer()
     {
-        return InvoiceType.Sell;
+        return this.customer;
     }
-    public void printData()
+    
+    public void setCustomer(Customer customer)
     {
-        System.out.println("=============SELL_PAID============");
-        System.out.println("ID: " + super.getId());
-        System.out.println("Tanngal: " + super.getDate());
-        System.out.println("Item: " + super.getItem());
-        System.out.println("Total Item: " + super.getTotalItem());
-        System.out.println("Total Harga: " + super.getTotalPrice());
-        System.out.println("Status: " + super.getInvoiceStatus());
-        System.out.println("Type: " + super.getInvoiceType());
+        this.customer = customer;
+    }
+    
+    public void printData(){
+        System.out.println("============INVOICE SELL_PAID============");
+        System.out.print("INVOICE dan ID");
+        System.out.println("");
+        System.out.print("ID : ");
+        System.out.println(this.getId());
+        System.out.print("Total harga : ");
+        System.out.println(this.totalPrice);
+        System.out.print("Status: ");
+        System.out.println(getInvoiceStatus());
+        System.out.print("Type: ");
+        System.out.println(getInvoiceType());
+    }
+    
+    public String toString()
+    {
+        return super.toString();
     }
 }

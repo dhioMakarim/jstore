@@ -7,44 +7,38 @@
  */
 public class DatabaseSupplier
 {
-    // instance variables - replace the example below with your own
-    private String[] listString;
-    private Supplier supplier;
+    // instance variables
+    private static Supplier[] listSupplier;
+    private static Supplier supplier;
 
     /**
-     * Constructor for objects of class DatabaseSupplier
+     * add supplier object
+     * @param   supplier   supplier's object
      */
-    public DatabaseSupplier()
-    {
-        // initialise instance variables
-        
+    public static boolean addSupplier(Supplier supplier){
+        return true;
     }
-    public boolean addSupplier(Supplier supplier)
-    {
-        return false;
-    }
-    public void removeSupplier(Supplier supplier)
-    {
-        
-    }
-    public Supplier getSupplier()
-    {
-        return supplier;
-        //menunjukkan data supplier
-    }
-    public String[] getListSupplier()
-    {
-        return listString;
-    }
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * remove supplier
+     * removing supplier
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return y;
+    public static void removeSupplier(Supplier supplier){
+    }
+    
+    /**
+     * get supplier object
+     * @return      supplier's object
+     */
+    public static Supplier getSupplier(){
+        return supplier;
+    }
+    
+    /**
+     * return list of supplier
+     * @return      list of the suppliers
+     */
+    public static Supplier[] getListSupplier(){
+        return listSupplier;
     }
 }

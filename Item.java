@@ -7,6 +7,7 @@
  */
 public class Item
 {
+    // instance variables
     private int id;
     private String name;
     private int stock;
@@ -14,147 +15,148 @@ public class Item
     private ItemCategory category;
     private ItemStatus status;
     private Supplier supplier;
-       
+    
     /**
-     * Constructor untuk object dari class Item
+     * Constructor for objects of class Item
      */
-    public Item(int id,
-        String name,
-        int stock,
-        int price,
-        ItemCategory category,
-        ItemStatus status,
-        Supplier supplier)
+    public Item(int id, String name, int stock, ItemStatus status,
+        int price, ItemCategory category, Supplier supplier)
     {
-        this.id=id;
-        this.name=name;
-        this.stock=stock;
-        this.price=price;
-        this.category=category;
-        this.status=status;
-        this.supplier=supplier;        
+       // initialise instance variables
+       this.id = id;
+       this.stock = stock;
+       this.price = price;
+       this.status = status;
+       this.name = name;
+       this.category = category;
+       this.supplier = supplier;
+    }
+
+    /**
+     * get item's id
+     * @return      item's id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * set item's id
+     * @param   id   item's id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * get item's name
+     * @return      item's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * set item's name
+     * @param   name    item's name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * get item's stock
+     * @return      item's number of stock
+     */
+    public int getStock() {
+        return stock;
+    }
+
+    /**
+     * set item's stock
+     * @param   stock    number of item's stock
+     */
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    /**
+     * get price's item
+     * @return      price of the item
+     */
+    public int getPrice() {
+        return price;
+    }
+
+    /**
+     * set price of the item
+     * @param   price    price of the item
+     */
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    /**
+     * get item's category name
+     * @return      item's category name
+     */
+    public ItemCategory getCategory() {
+        return category;
+    }
+
+    /**
+     * set item category
+     * @param   category    category of the item
+     */
+    public void setCategory(ItemCategory category) {
+        this.category = category;
     }
     
     /**
-     * Metode untuk mendapatkan id barang
+     * get supplier object
+     * @param   supplier    supplier from the Supplier object
      */
-    public int getId()
-    {
-        return id;
+    public void setSupplier(Supplier supplier){
+        this.supplier = supplier;
     }
+    
     /**
-     * Metode untuk mendapatkan nama barang
+     * set item's supplier
+     * @return      item's supplier object
      */
-    public String getName()
-    {
-        return name;
-    }
-    /**
-     * Metode untuk mendapatkan stok barang
-     */
-    public int getStock()
-    {
-        return stock;
-    }
-    /**
-     * Metode untuk mendapatkan harga barang
-     */
-    public int getPrice()
-    {
-        return price;
-    }
-    /**
-     * Metode untuk mendapatkan kategori barang
-     */
-    public ItemCategory getCategory()
-    {
-        return category;
-    }
-    /**
-     * Metode untuk mendapatkan kategori barang
-     */
-    public ItemStatus getStatus()
-    {
-        return status;
-    }
-    /**
-     * Metode untuk mendapatkan supplier barang
-     * Menyambung ke class Supplier
-     */
-    public Supplier getSupplier()
-    {
+    public Supplier getSupplier(){
         return supplier;
     }
-    /**
-     * Metode untuk mengisi id barang
-     */
-    public void setId(int id)
-    {
-        this.id=id;
+    
+    public void setStatus(ItemStatus status){
+        this.status = status;
     }
+    
     /**
-     * Metode untuk mengisi nama barang
+     * set item's supplier
+     * @return      item's supplier object
      */
-    public void setName(String name)
-    {
-        this.name=name;
+    public ItemStatus getStatus(){
+        return status;
     }
+    
     /**
-     * Metode untuk mengisi stok barang
+     * print name of the item
      */
-    public void setStock(int stock)
-    {
-        this.stock=stock;
-    }
-    /**
-     * Metode untuk mengisi harga barang
-     */
-    public void setPrice(int price)
-    {
-        this.price=price;
-    }
-    /**
-     * Metode untuk mengisi kategori barang
-     */
-    public void setCategory(ItemCategory category)
-    {
-        this.category=category;
-    }
-    public void setStatus(ItemStatus status)
-    {
-        this.status=status;
-    }
-    /**
-     * Metode untuk mengisi supplier barang
-     * Menyambung ke class Supplier
-     */
-    public void setSupplier(Supplier supplier)
-    {
-        this.supplier=supplier;   
-    }
-    /**
-     * Metode untuk mencetak nama item
-     * 
-     */
-    public void printData()
-    {
-        System.out.println("==============ITEM==============");
-        System.out.println("ID: " + id);
-        System.out.println("Name: " + name);
-        System.out.println("Stok: " + stock);
-        System.out.println("Kategori: " + category);
-        System.out.println("Status: " + status);
-        System.out.println("Supplier: " + supplier.getName());
-    }
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return y;
+    public void printData(){
+        //print Item name
+        System.out.println("============ITEM============");
+        System.out.print("ITEM dan ID");
+        System.out.println("");
+        System.out.print("Nama : ");
+        System.out.println(this.name);
+        System.out.print("Stok : ");
+        System.out.println(this.stock);
+        System.out.print("Kategory : ");
+        System.out.println(this.category);
+        System.out.print("Status : ");
+        System.out.println(this.status.toString());
+        System.out.print("Supplier : ");
+        System.out.println(this.supplier.getName());
     }
 }

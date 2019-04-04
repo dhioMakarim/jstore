@@ -7,59 +7,74 @@
  */
 public class Sell_Installment extends Invoice
 {
+  
+    private static final InvoiceType INVOICE_TYPE = InvoiceType.Sell;
+    private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Installment;
     private int installmentPeriod;
     private int installmentPrice;
-    private InvoiceType INVOICE_TYPE;
-    private InvoiceStatus INVOICE_STATUS;
-
+    private Customer customer;
     /**
-     * Constructor for objects of class Buy_Paid
+     * Constructor for objects of class Sell_Installment
      */
-    public Sell_Installment(int id,
-        Item item,
-        String date,
-        int totalItem,
-        int totalPrice,
-        int installmentPeriod)
+    public Sell_Installment(int id, Item item, int totalItem, int installmentPeriod, Customer customer)
     {
-        super(id, item, date, totalItem, totalPrice);
-        
+        super(id, item, totalItem);
+        this.customer = customer;
     }
     
-    public int getInstallmentPeriod()
-    {
-        return installmentPeriod;
+    public int getInstallmentPeriod(){
+        return this.installmentPeriod;
     }
-    public int getInstallmentPrice()
-    {
-        return installmentPrice;
+        
+    public int getInstallmentPrice(){
+        return this.installmentPrice;
     }
-    public InvoiceStatus getInvoiceStatus()
-    {
-        return InvoiceStatus.Installment;
+        
+    public InvoiceStatus getInvoiceStatus(){
+        return this.INVOICE_STATUS;
     }
-    public InvoiceType getInvoiceType()
-    {
-        return InvoiceType.Sell;
+        
+    public InvoiceType getInvoiceType(){
+        return this.INVOICE_TYPE;
     }
-    public void setInstallmentPrice()
-    {
-        this.installmentPrice = (((totalPrice/installmentPeriod)*102)/100);
+        
+    public void setInstallmentPrice(int installmentPrice){
+        double div = 1.02;
+        this.installmentPrice = (int)(installmentPrice/this.installmentPeriod*div);
     }
-    public void setTotalPrice()
-    {
-        this.totalPrice = installmentPrice*installmentPeriod;
+        
+    public void setTotalPrice(int totalPrice){
+        this.totalPrice = this.installmentPrice * this.installmentPeriod;
     }
-    public void printData()
+    
+    public Customer getCustomer()
     {
-        System.out.println("=============SELL_INSTALLMENT============");
-        System.out.println("ID: " + super.getId());
-        System.out.println("Tanngal: " + super.getDate());
-        System.out.println("Item: " + super.getItem());
-        System.out.println("Total Item: " + super.getTotalItem());
-        System.out.println("Total Harga: " + super.getTotalPrice());
-        System.out.println("Status: " + super.getInvoiceStatus());
-        System.out.println("Type: " + super.getInvoiceType());
-        System.out.println("Installment Price: " + getInstallmentPrice());
+        return this.customer;
+    }
+    
+    public void setCustomer(Customer customer)
+    {
+        this.customer = customer;
+    }
+    
+    public void printData(){
+        System.out.println("============INVOICE SELL_INSTALLMENT============");
+        System.out.print("INVOICE dan ID");
+        System.out.println("");
+        System.out.print("ID : ");
+        System.out.println(this.getId());
+        System.out.print("Total harga : ");
+        System.out.println(this.totalPrice);
+        System.out.print("Total installment : ");
+        System.out.println(this.installmentPrice);
+        System.out.print("Status: ");
+        System.out.println(getInvoiceStatus());
+        System.out.print("Type: ");
+        System.out.println(getInvoiceType());
+    }
+    
+    public String toString()
+    {
+        return super.toString();
     }
 }

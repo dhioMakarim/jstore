@@ -7,45 +7,47 @@
  */
 public class DatabaseItem
 {
-    // instance variables - replace the example below with your own
-    
-    private String[] listItem;
-    private static Item itemDB;
-    
+    // instance variables
+    private Item[] listItem;
+    public Item itemDB;
+
     /**
-     * Constructor untuk objects dari class DatabaseItem
+     * Constructor for objects of class DatabaseItem
      */
     public DatabaseItem()
     {
-        // initialise instance variables
         
     }
-    public static boolean addItem(Item item)
-    {
-        itemDB = item;
-        return false;
+    
+    /**
+     * set item's object
+     * @param   item    item object   
+     */
+    public boolean addItem(Item item){
+        return true;
     }
-    public boolean removeItem(Item item)
-    {
-        return false;
+    
+    /**
+     * remove item
+     * @return      whether item is remove successfully or not
+     */
+    public boolean removeItem(Item item){
+        return true;
     }
-    public static Item getItem()
-    {
+    
+    /**
+     * get item's object
+     * @return      one of the item's object
+     */
+    public Item getItem(){
         return itemDB;
     }
-    public String[] getItemDatabase()
-    {
-        return listItem;
-    }
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * get all items
+     * @return      all list of the items
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return  y;
+    public Item[] getItemDatabase(){
+        return listItem;
     }
 }

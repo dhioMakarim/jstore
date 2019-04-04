@@ -5,81 +5,83 @@
  * @author (your name)
  * @version (a version number or a date)
  */
+import java.util.*; 
+
 public class Transaction
 {
     // instance variables - replace the example below with your own
-    private int x;
-    private Item item;
-    
-    /**
-     * Constructor for objects of class Transaction
-     */
-    public Transaction()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+    private DatabaseItem databaseItem;
 
+    public Transaction(DatabaseItem databaseItem){
+        this.databaseItem = databaseItem;
+    }
     
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void orderNewItem(Item item)
-    {
-        Invoice obj1 = new Buy_Paid(1, item, "21-03-2019", 10, item.getPrice());
-        if(obj1 instanceof Sell_Paid)
-        {
-            System.out.println("Benar, Invoice Type adalah Sell_Paid");
+    public void orderNewItem(Item item){
+        Date d1 = new Date();
+        
+        Invoice buy_paid1 = new Buy_Paid(87, item, d1.toString(), 1, item.getPrice());
+        System.out.println("==========================");
+        if (buy_paid1 instanceof Sell_Paid) {
+            System.out.println("Benar Invoice Type adalah Sell_Paid");
         }
-        else
-        {
-            System.out.println("Salah, Invoice Type bukan Sell_Paid");
+        else {
+           System.out.println("Salah,Invoice Type bukan Sell _Paid"); 
         }
-        System.out.println("--------ORDER NEW ITEM---------");
-        obj1.printData();
+        buy_paid1.printData();
         item.printData();
     }
-    public void orderSecondItem(Item item)
-    {
-        Invoice obj2 = new Buy_Paid(2, item, "21-03-2019", 11, item.getPrice());
-               
-        System.out.println("--------ORDER SECOND ITEM---------");
-        obj2.printData();
-        item.printData();
-    }
-    public void orderRefurbishedItem(Item item)
-    {
-        Invoice obj3 = new Buy_Paid(3, item, "21-03-2019", 12, item.getPrice());
+    
+    public void orderSecondItem(Item item1){
+        Date d1 = new Date();
         
-        System.out.println("--------ORDER REFURBISHED ITEM---------");
-        obj3.printData();
+        item1.setStatus(ItemStatus.Second);
+        
+        Invoice buy_paid1 = new Buy_Paid(89, item1, d1.toString(), 1, item1.getPrice());
+        System.out.println("==========================");
+        if (buy_paid1 instanceof Sell_Paid) {
+            System.out.println("Benar Invoice Type adalah Sell_Paid");
+        }
+        else {
+           System.out.println("Salah,Invoice Type bukan Sell _Paid"); 
+        }
+    }
+    
+    public void orderRefurbishedItem(Item item1){
+        Date d1 = new Date();
+        
+        item1.setStatus(ItemStatus.Refurbished);
+        
+        Invoice buy_paid1 = new Buy_Paid(96, item1, d1.toString(), 1, item1.getPrice());
+        System.out.println("==========================");
+        if (buy_paid1 instanceof Sell_Paid) {
+            System.out.println("Benar Invoice Type adalah Sell_Paid");
+        }
+        else {
+           System.out.println("Salah,Invoice Type bukan Sell _Paid"); 
+        }
+    }
+    
+    public void sellItemPaid(Item item){
+        Date d1 = new Date();
+        
+        Invoice sell_paid1 = new Sell_Paid(77, item, d1.toString(), 1, item.getPrice());
+        sell_paid1.printData();
         item.printData();
     }
-    public void sellItemPaid(Item item)
-    {
-        Invoice obj4 = new Sell_Paid(1, item, "21-03-2019", 14, item.getPrice());
+    
+    public void sellItemUnpaid(Item item){
+        Date d1 = new Date();
         
-        System.out.println("--------PAID ITEM---------");
-        obj4.printData();
+        Invoice sell_unpaid1 = new Sell_Unpaid(78, item, d1.toString(), 1, item.getPrice(), d1.toString());
+        sell_unpaid1.printData();
         item.printData();
     }
-    public void sellItemUnpaid(Item item)
-    {
-        Invoice obj5 = new Sell_Unpaid(2, item, "21-03-2019", 14, item.getPrice(), "30-03-2019");
+    
+    public void sellItemInstallment(Item item){
+        Date d1 = new Date();
         
-        System.out.println("--------UNPAID ITEM---------");
-        obj5.printData();
-        item.printData();
-    }
-    public void sellItemInstallment(Item item)
-    {
-        Invoice obj6 = new Sell_Installment(3, item, "21-03-2019", 14, item.getPrice(), 5);
-        
-        System.out.println("--------INSTALLMENT ITEM---------");
-        obj6.printData();
+        Invoice sell_installment1 = new Sell_Installment(35, item, d1.toString(), 1, item.getPrice(), 22);
+        sell_installment1.printData();
         item.printData();
     }
 }
