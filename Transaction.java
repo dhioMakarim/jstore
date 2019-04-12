@@ -1,87 +1,139 @@
-
+import java.util.*; 
 /**
  * Write a description of class Transaction here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-import java.util.*; 
+
 
 public class Transaction
 {
-    // instance variables - replace the example below with your own
-    private DatabaseItem databaseItem;
+    private static ArrayList<Integer> listItem = new ArrayList<Integer>();
+    private static Buy_Paid order;
+    private static Sell_Paid sellPaid;
+    private static Sell_Unpaid sellUnpaid;
+    private static Sell_Installment sellInstall;
+    
+    /**
+     * Constructor for objects of class Transaction
+     */
+    public Transaction()
+    {
+        
+    }
 
-    public Transaction(DatabaseItem databaseItem){
-        this.databaseItem = databaseItem;
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void orderNewItem(Item item)
+    {
+        listItem.add(item.getId());
+        order = new Buy_Paid(listItem);
+        DatabaseInvoice.addInvoice(order);
     }
     
-    public void orderNewItem(Item item){
-        Date d1 = new Date();
-        
-        Invoice buy_paid1 = new Buy_Paid(87, item, d1.toString(), 1, item.getPrice());
-        System.out.println("==========================");
-        if (buy_paid1 instanceof Sell_Paid) {
-            System.out.println("Benar Invoice Type adalah Sell_Paid");
-        }
-        else {
-           System.out.println("Salah,Invoice Type bukan Sell _Paid"); 
-        }
-        buy_paid1.printData();
-        item.printData();
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void orderSecondItem(Item item)
+    {
+        listItem = DatabaseInvoice.getInvoice(DatabaseInvoice.getLastInvoiceID()).getItem();
+        listItem.add(item.getId());
+        order.setItem(listItem);
     }
     
-    public void orderSecondItem(Item item1){
-        Date d1 = new Date();
-        
-        item1.setStatus(ItemStatus.Second);
-        
-        Invoice buy_paid1 = new Buy_Paid(89, item1, d1.toString(), 1, item1.getPrice());
-        System.out.println("==========================");
-        if (buy_paid1 instanceof Sell_Paid) {
-            System.out.println("Benar Invoice Type adalah Sell_Paid");
-        }
-        else {
-           System.out.println("Salah,Invoice Type bukan Sell _Paid"); 
-        }
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void orderRefurbishedItem(Item item)
+    {
+        listItem = DatabaseInvoice.getInvoice(DatabaseInvoice.getLastInvoiceID()).getItem();
+        listItem.add(item.getId());
+        order.setItem(listItem);
     }
     
-    public void orderRefurbishedItem(Item item1){
-        Date d1 = new Date();
-        
-        item1.setStatus(ItemStatus.Refurbished);
-        
-        Invoice buy_paid1 = new Buy_Paid(96, item1, d1.toString(), 1, item1.getPrice());
-        System.out.println("==========================");
-        if (buy_paid1 instanceof Sell_Paid) {
-            System.out.println("Benar Invoice Type adalah Sell_Paid");
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void sellItemPaid(Item item, Customer customer)
+    {
+        listItem.add(item.getId());
+        sellPaid = new Sell_Paid(listItem, customer);
+        DatabaseInvoice.addInvoice(sellPaid);
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void sellItemUnpaid(Item item, Customer customer)
+    {
+        listItem.add(item.getId());
+        sellUnpaid = new Sell_Unpaid(listItem, customer);
+        DatabaseInvoice.addInvoice(sellUnpaid);
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void sellItemInstallment(Item item, Customer customer, 
+    int installmentPeriod)
+    {
+        listItem.add(item.getId());
+        sellInstall = new Sell_Installment(listItem, installmentPeriod, customer);
+        DatabaseInvoice.addInvoice(sellInstall);
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static boolean finishTransaction(Invoice invoice)
+    {
+        invoice = DatabaseInvoice.getInvoice(invoice.getId());
+        if(invoice == null)
+        {
+            return false;
         }
-        else {
-           System.out.println("Salah,Invoice Type bukan Sell _Paid"); 
+        invoice.setIsActive(false);
+        System.out.println("isActive : " + invoice.getIsActive());
+        return true;
+    }
+    
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static boolean cancelTransaction(Invoice invoice)
+    {
+        invoice = DatabaseInvoice.getInvoice(invoice.getId());
+        if(invoice == null)
+        {
+            return false;
         }
-    }
-    
-    public void sellItemPaid(Item item){
-        Date d1 = new Date();
-        
-        Invoice sell_paid1 = new Sell_Paid(77, item, d1.toString(), 1, item.getPrice());
-        sell_paid1.printData();
-        item.printData();
-    }
-    
-    public void sellItemUnpaid(Item item){
-        Date d1 = new Date();
-        
-        Invoice sell_unpaid1 = new Sell_Unpaid(78, item, d1.toString(), 1, item.getPrice(), d1.toString());
-        sell_unpaid1.printData();
-        item.printData();
-    }
-    
-    public void sellItemInstallment(Item item){
-        Date d1 = new Date();
-        
-        Invoice sell_installment1 = new Sell_Installment(35, item, d1.toString(), 1, item.getPrice(), 22);
-        sell_installment1.printData();
-        item.printData();
+        DatabaseInvoice.removeInvoice(invoice.getId());
+        return true;
     }
 }

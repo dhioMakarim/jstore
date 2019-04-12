@@ -80,7 +80,7 @@ public class Location
     /**
      * printing province data
      */
-    public void printData(){
+    /* public void printData(){
         System.out.print("LOCATION");
         System.out.println("");
         System.out.print("Provinsi : ");
@@ -91,5 +91,13 @@ public class Location
         System.out.println("");
         System.out.print("Lokasi");
         System.out.println("");
+    } */
+    public String toString()
+    {
+        System.out.println("==========LOCATION==========");
+        System.out.println("Province: " + province);
+        System.out.println("City: " + city);
+        System.out.println("Description: " + description);
+        return "";
     }
 }

@@ -17,9 +17,9 @@ public class Supplier
     /**
      * Constructor for objects of class Supplier
      */
-    public Supplier(int id, String name, String email, String phoneNumber, Location location)
+    public Supplier(String name, String email, String phoneNumber, Location location)
     {
-        this.id = id;
+        this.id = DatabaseSupplier.getLastSupplierID() + 1;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -30,7 +30,8 @@ public class Supplier
      * return supplier id
      * @return      supplier's id
      */
-    public int getId() {
+    public int getId() 
+    {
         return id;
     }
 
@@ -38,7 +39,8 @@ public class Supplier
      * set supplier id
      * @param   id   supplier's id
      */
-    public void setId(int id) {
+    public void setId(int id) 
+    {
         this.id = id;
     }
 
@@ -46,7 +48,8 @@ public class Supplier
      * get supplier name
      * @return      supplier's name
      */
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
@@ -54,7 +57,8 @@ public class Supplier
      * set supplier name
      * @param   name   supplier's name
      */
-    public void setName(String name) {
+    public void setName(String name) 
+    {
         this.name = name;
     }
 
@@ -62,7 +66,8 @@ public class Supplier
      * get supplier email
      * @return      supplier's email
      */
-    public String getEmail() {
+    public String getEmail() 
+    {
         return email;
     }
 
@@ -70,7 +75,8 @@ public class Supplier
      * set supplier email
      * @param   email   supplier's email
      */
-    public void setEmail(String email) {
+    public void setEmail(String email) 
+    {
         this.email = email;
     }
 
@@ -78,7 +84,8 @@ public class Supplier
      * get supplier phone number
      * @return      supplier's phone number
      */
-    public String getPhoneNumber() {
+    public String getPhoneNumber() 
+    {
         return phoneNumber;
     }
 
@@ -86,7 +93,8 @@ public class Supplier
      * set supplier phone number
      * @param   phoneNumber   supplier's phoneNumber
      */
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) 
+    {
         this.phoneNumber = phoneNumber;
     }
 
@@ -94,7 +102,8 @@ public class Supplier
      * get supplier object
      * @return      supplier's location object
      */
-    public Location getLocation() {
+    public Location getLocation() 
+    {
         return location;
     }
 
@@ -109,7 +118,7 @@ public class Supplier
     /**
      * print supplier's name
      */
-    public void printData(){
+    /* public void printData(){
         System.out.print("SUPPLIER dan ID");
         System.out.println("");
         System.out.print("Nama : ");
@@ -120,5 +129,15 @@ public class Supplier
         System.out.println(this.phoneNumber);
         System.out.print("Lokasi");
         System.out.println("");
+    } */
+    public String toString()
+    {
+        System.out.println("==========SUPPLIER==========");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("PhoneNumber: " + phoneNumber);
+        System.out.println("Location: " + location.getCity());
+        return "";
     }
 }

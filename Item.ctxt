@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Item
 comment0.text=\r\n\ Data\ item\ yang\ di\ toko.\r\n\r\n\ @author\ Dhio\ Makarim\ Utomo\r\n\ @version\ 0.1.2\ 28/02/2019\r\n
-comment1.params=id\ name\ stock\ status\ price\ category\ supplier
-comment1.target=Item(int,\ java.lang.String,\ int,\ ItemStatus,\ int,\ ItemCategory,\ Supplier)
+comment1.params=name\ stock\ status\ price\ category\ supplier
+comment1.target=Item(java.lang.String,\ int,\ ItemStatus,\ int,\ ItemCategory,\ Supplier)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Item\r\n
 comment10.params=
 comment10.target=ItemCategory\ getCategory()
@@ -22,7 +22,7 @@ comment15.params=
 comment15.target=ItemStatus\ getStatus()
 comment15.text=\r\n\ set\ item's\ supplier\r\n\ @return\ \ \ \ \ \ item's\ supplier\ object\r\n
 comment16.params=
-comment16.target=void\ printData()
+comment16.target=java.lang.String\ toString()
 comment16.text=\r\n\ print\ name\ of\ the\ item\r\n
 comment2.params=
 comment2.target=int\ getId()

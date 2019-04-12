@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Database item yg di toko.
  *
@@ -7,47 +7,146 @@
  */
 public class DatabaseItem
 {
-    // instance variables
-    private Item[] listItem;
-    public Item itemDB;
+    private static ArrayList<Item> ITEM_DATABASE;
+    private static int LAST_ITEM_ID = 0;
+    
 
     /**
      * Constructor for objects of class DatabaseItem
      */
     public DatabaseItem()
     {
-        
-    }
-    
-    /**
-     * set item's object
-     * @param   item    item object   
-     */
-    public boolean addItem(Item item){
-        return true;
-    }
-    
-    /**
-     * remove item
-     * @return      whether item is remove successfully or not
-     */
-    public boolean removeItem(Item item){
-        return true;
-    }
-    
-    /**
-     * get item's object
-     * @return      one of the item's object
-     */
-    public Item getItem(){
-        return itemDB;
+        // initialise instance variables
     }
     
     /**
      * get all items
      * @return      all list of the items
      */
-    public Item[] getItemDatabase(){
-        return listItem;
+    public static ArrayList<Item> getItemDatabase()
+    {
+        return ITEM_DATABASE;
     }
+    
+    public static int getLastItemID()
+    {
+        return LAST_ITEM_ID;
+    }
+    
+    /**
+     * set item's object
+     * @param   item    item object   
+     */
+    public static boolean addItem(Item item)
+    {
+        for(Item temp : ITEM_DATABASE) 
+        {
+            if(temp.getName() == item.getName() && temp.getStatus() == item.getStatus()
+            && temp.getSupplier() == item.getSupplier()) 
+            {
+                ITEM_DATABASE.add(item);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+       
+    /**
+     * get item's object
+     * @return      one of the item's object
+     */
+    public static Item getItemFromID(int id)
+    {
+        for(Item temp : ITEM_DATABASE) 
+        {
+            if(temp.getId() == id) 
+            {
+                return temp;
+            }
+        }
+        return null;
+    }
+    
+    public static ArrayList<Item> getItemFromSupplier(Supplier supplier)
+    {
+        ArrayList<Item> list = new ArrayList<Item>();
+        boolean found = false;
+        for (Item temp : ITEM_DATABASE)
+        {
+            if(temp.getSupplier() == supplier)
+            {
+                list.add(temp);
+                found = true;
+            }
+        }
+        if (found)
+        {
+            return list;
+        }
+        else 
+        {
+            return null;
+        }
+    }
+    
+    public static ArrayList<Item> getItemFromCategory(ItemCategory category)
+    {
+        ArrayList<Item> list = new ArrayList<Item>();
+        boolean found = false;
+        for (Item temp : ITEM_DATABASE)
+        {
+            if(temp.getCategory() == category)
+            {
+                list.add(temp);
+                found = true;
+            }
+        }
+        if (found)
+        {
+            return list;
+        }
+        else 
+        {
+            return null;
+        }
+    }
+    
+    public static ArrayList<Item> getItemFromStatus(ItemStatus status)
+    {
+        ArrayList<Item> list = new ArrayList<Item>();
+        boolean found = false;
+        for (Item temp : ITEM_DATABASE)
+        {
+            if(temp.getStatus() == status)
+            {
+                list.add(temp);
+                found = true;
+            }
+        }
+        if (found)
+        {
+            return list;
+        }
+        else 
+        {
+            return null;
+        }
+    }
+    
+    public static boolean removeItem(int id)
+    {
+        for(Item temp : ITEM_DATABASE) 
+        {
+            if(temp.getId() == id) 
+            {
+                
+                ITEM_DATABASE.remove(temp);
+                return true;
+                
+            }
+        }
+        return false;
+    }
+    
 }

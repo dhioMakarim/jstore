@@ -19,11 +19,11 @@ public class Item
     /**
      * Constructor for objects of class Item
      */
-    public Item(int id, String name, int stock, ItemStatus status,
+    public Item(String name, int stock, ItemStatus status,
         int price, ItemCategory category, Supplier supplier)
     {
        // initialise instance variables
-       this.id = id;
+       this.id = DatabaseItem.getLastItemID() + 1;
        this.stock = stock;
        this.price = price;
        this.status = status;
@@ -44,7 +44,8 @@ public class Item
      * set item's id
      * @param   id   item's id
      */
-    public void setId(int id) {
+    public void setId(int id) 
+    {
         this.id = id;
     }
 
@@ -52,7 +53,8 @@ public class Item
      * get item's name
      * @return      item's name
      */
-    public String getName() {
+    public String getName() 
+    {
         return name;
     }
 
@@ -60,7 +62,8 @@ public class Item
      * set item's name
      * @param   name    item's name
      */
-    public void setName(String name) {
+    public void setName(String name) 
+    {
         this.name = name;
     }
 
@@ -68,7 +71,8 @@ public class Item
      * get item's stock
      * @return      item's number of stock
      */
-    public int getStock() {
+    public int getStock() 
+    {
         return stock;
     }
 
@@ -76,7 +80,8 @@ public class Item
      * set item's stock
      * @param   stock    number of item's stock
      */
-    public void setStock(int stock) {
+    public void setStock(int stock) 
+    {
         this.stock = stock;
     }
 
@@ -84,7 +89,8 @@ public class Item
      * get price's item
      * @return      price of the item
      */
-    public int getPrice() {
+    public int getPrice() 
+    {
         return price;
     }
 
@@ -92,7 +98,8 @@ public class Item
      * set price of the item
      * @param   price    price of the item
      */
-    public void setPrice(int price) {
+    public void setPrice(int price) 
+    {
         this.price = price;
     }
 
@@ -100,7 +107,8 @@ public class Item
      * get item's category name
      * @return      item's category name
      */
-    public ItemCategory getCategory() {
+    public ItemCategory getCategory() 
+    {
         return category;
     }
 
@@ -108,7 +116,8 @@ public class Item
      * set item category
      * @param   category    category of the item
      */
-    public void setCategory(ItemCategory category) {
+    public void setCategory(ItemCategory category) 
+    {
         this.category = category;
     }
     
@@ -116,7 +125,8 @@ public class Item
      * get supplier object
      * @param   supplier    supplier from the Supplier object
      */
-    public void setSupplier(Supplier supplier){
+    public void setSupplier(Supplier supplier)
+    {
         this.supplier = supplier;
     }
     
@@ -124,11 +134,13 @@ public class Item
      * set item's supplier
      * @return      item's supplier object
      */
-    public Supplier getSupplier(){
+    public Supplier getSupplier()
+    {
         return supplier;
     }
     
-    public void setStatus(ItemStatus status){
+    public void setStatus(ItemStatus status)
+    {
         this.status = status;
     }
     
@@ -136,27 +148,25 @@ public class Item
      * set item's supplier
      * @return      item's supplier object
      */
-    public ItemStatus getStatus(){
+    public ItemStatus getStatus()
+    {
         return status;
     }
     
     /**
      * print name of the item
      */
-    public void printData(){
-        //print Item name
-        System.out.println("============ITEM============");
-        System.out.print("ITEM dan ID");
-        System.out.println("");
-        System.out.print("Nama : ");
-        System.out.println(this.name);
-        System.out.print("Stok : ");
-        System.out.println(this.stock);
-        System.out.print("Kategory : ");
-        System.out.println(this.category);
-        System.out.print("Status : ");
-        System.out.println(this.status.toString());
-        System.out.print("Supplier : ");
-        System.out.println(this.supplier.getName());
+    
+    public String toString()
+    {
+        System.out.println("==========ITEM==========");
+        System.out.println("ID:" + id);
+        System.out.println("Name:" + name);
+        System.out.println("Stock:" + stock);
+        System.out.println("Price:" + price);
+        System.out.println("Category:" + category);
+        System.out.println("Status:" + status);
+        System.out.println("Supplier:" + supplier.getName());
+        return "";
     }
 }

@@ -18,7 +18,7 @@ public class JStore
 
     public static void main(String[] args)
     {
-       DatabaseItem databaseItem = new DatabaseItem();
+       /* DatabaseItem databaseItem = new DatabaseItem();
         
        Location location1 = new Location("Jawa Barat", "Jawa Bagian Barat", "Depook");
        Supplier supplier1 = new Supplier(17, "sebuah supplier", "sebuah.email@gmail.com", "080812127575", location1);
@@ -30,6 +30,6 @@ public class JStore
        transaction.orderNewItem(item1);
        transaction.sellItemPaid(item1);
        transaction.sellItemUnpaid(item1);
-       transaction.sellItemInstallment(item1);
+       transaction.sellItemInstallment(item1); */
     }
 }

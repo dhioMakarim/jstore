@@ -1,4 +1,5 @@
-
+import java.text.*;
+import java.util.*;
 /**
  * Write a description of class Sell_Installment here.
  *
@@ -7,74 +8,141 @@
  */
 public class Sell_Installment extends Invoice
 {
-  
-    private static final InvoiceType INVOICE_TYPE = InvoiceType.Sell;
-    private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Installment;
+    private static InvoiceType INVOICE_TYPE = InvoiceType.Sell;
+    private static InvoiceStatus INVOICE_STATUS = InvoiceStatus.Installment;
     private int installmentPeriod;
     private int installmentPrice;
     private Customer customer;
+    private boolean isActive; 
+    private SimpleDateFormat dateFormat = new SimpleDateFormat ("dd MMM yyy");
+    
     /**
      * Constructor for objects of class Sell_Installment
      */
-    public Sell_Installment(int id, Item item, int totalItem, int installmentPeriod, Customer customer)
+    public Sell_Installment(ArrayList<Integer> item, int installmentPeriod, Customer customer)
     {
-        super(id, item, totalItem);
-        this.customer = customer;
+        super(item);
+        this.installmentPeriod = installmentPeriod;
+        this.isActive = true;
+    }
+
+    /**
+     * An e
+     *
+     * @param  y 
+     * @return    the 
+     */
+    public int getInstallmentPeriod()
+    {
+        return installmentPeriod;
     }
     
-    public int getInstallmentPeriod(){
-        return this.installmentPeriod;
-    }
-        
-    public int getInstallmentPrice(){
-        return this.installmentPrice;
-    }
-        
-    public InvoiceStatus getInvoiceStatus(){
-        return this.INVOICE_STATUS;
-    }
-        
-    public InvoiceType getInvoiceType(){
-        return this.INVOICE_TYPE;
-    }
-        
-    public void setInstallmentPrice(int installmentPrice){
-        double div = 1.02;
-        this.installmentPrice = (int)(installmentPrice/this.installmentPeriod*div);
-    }
-        
-    public void setTotalPrice(int totalPrice){
-        this.totalPrice = this.installmentPrice * this.installmentPeriod;
+    /**
+     * An e
+     *
+     * @param  y 
+     * @return    the 
+     */
+    public int getInstallmentPrice()
+    {
+        return installmentPrice;
     }
     
+    /**
+     * An 
+     *
+     * @param  y  a sa
+     * @return    the 
+     */
+    public InvoiceStatus getInvoiceStatus()
+    {
+        return INVOICE_STATUS;
+    }
+    
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
+    public InvoiceType getInvoiceType()
+    {
+        return INVOICE_TYPE;
+    }
+    
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
     public Customer getCustomer()
     {
-        return this.customer;
+        return customer;
     }
     
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
+    public void setInstallmentPrice(int totalPrice)
+    {
+        installmentPrice = (int)(1.02 * (totalPrice / installmentPeriod));
+    }
+    
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
+    public void setTotalPrice(int installmentPeriod)
+    {
+        int totalPrice = installmentPrice * installmentPeriod;
+        super.setTotalPrice(totalPrice);
+    }
+    
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
     public void setCustomer(Customer customer)
     {
         this.customer = customer;
     }
     
-    public void printData(){
-        System.out.println("============INVOICE SELL_INSTALLMENT============");
-        System.out.print("INVOICE dan ID");
-        System.out.println("");
-        System.out.print("ID : ");
-        System.out.println(this.getId());
-        System.out.print("Total harga : ");
-        System.out.println(this.totalPrice);
-        System.out.print("Total installment : ");
-        System.out.println(this.installmentPrice);
-        System.out.print("Status: ");
-        System.out.println(getInvoiceStatus());
-        System.out.print("Type: ");
-        System.out.println(getInvoiceType());
-    }
-    
+    /**
+     * Me
+     *
+     */    
+    @Override
     public String toString()
     {
-        return super.toString();
+        System.out.println("ID = " + super.getId());
+        ArrayList<Integer> listItemID = DatabaseInvoice.getInvoice(super.getId()).getItem();
+        for (int tempID : listItemID)
+        {
+            System.out.println("Item = " +
+            DatabaseItem.getItemFromID(tempID).getName());
+            System.out.println("Price = " +
+            DatabaseItem.getItemFromID(tempID).getPrice());
+            System.out.println("Supplier ID = " +
+            DatabaseItem.getItemFromID(tempID).getSupplier().getId());
+            System.out.println("Supplier Name = " +
+            DatabaseItem.getItemFromID(tempID).getSupplier().getName());
+        }
+        System.out.println("Buy date = " + dateFormat.format(super.getDate().getTime()));
+        System.out.println("Price total = " + super.getTotalPrice());
+        System.out.println("Installment price = " + installmentPrice);
+        System.out.println("Customer ID = " + customer.getId());
+        System.out.println("Customer name = " + customer.getName());
+        System.out.println("Status = " + INVOICE_STATUS);
+        System.out.println("Installment period = " + installmentPeriod);
+        System.out.println("Sell success.");
+        return "";
     }
 }
