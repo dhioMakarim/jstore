@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=DatabaseInvoice
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DatabaseInvoice\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=DatabaseInvoice()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ DatabaseInvoice\r\n
+comment2.params=
+comment2.target=java.util.ArrayList\ getInvoiceDatabase()
+comment2.text=\r\n\ Method\ untuk\ mengembalikan\ supplier\r\n\r\n\ @return\ \ \ \ objek\ supplier\r\n
+comment3.params=
+comment3.target=int\ getLastInvoiceID()
+comment3.text=\r\n\ Method\ untuk\ mengembalikan\ list\ supplier\r\n\r\n\ @return\ \ \ \ list\ supplier\r\n
+comment4.params=invoice
+comment4.target=boolean\ addInvoice(Invoice)
+comment4.text=\r\n\ Method\ untuk\ menambahkan\ supplier\ kedalam\ list\r\n\r\n\ @return\ \ \ \ false\r\n
+comment5.params=id
+comment5.target=Invoice\ getInvoice(int)
+comment5.text=\r\n\ Method\ untuk\ mengembalikan\ supplier\r\n\r\n\ @return\ \ \ \ objek\ supplier\r\n
+comment6.params=customer
+comment6.target=Invoice\ getActiveOrder(Customer)
+comment6.text=\r\n\ Method\ untuk\ mengembalikan\ supplier\r\n\r\n\ @return\ \ \ \ objek\ supplier\r\n
+comment7.params=id
+comment7.target=boolean\ removeInvoice(int)
+comment7.text=\r\n\ Method\ untuk\ menghapus\ supplier\ dari\ list\r\n\r\n
+numComments=8
