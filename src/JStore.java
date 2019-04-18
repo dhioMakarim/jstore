@@ -7,93 +7,146 @@ import java.util.*;
  */
 public class JStore
 {
-    
+    // instance variables - replace the example below with your own
+
     /**
      * Constructor for objects of class JStore
      */
     public JStore()
     {
-     
+        // initialise instance variables
     }
+
+    /**
+     * Fungsi utama yang akan dijalankan
+     */
     public static void main(String[] args)
     {
-       Location lokasi = new Location("Jawa Barat", "Jawa Bagian Barat", "Depok");
-       Supplier supplier1 = new Supplier("supplier 1", "supplier1@gmail.com", "080812127571", lokasi);
-       DatabaseSupplier.addSupplier(supplier1);
-       Supplier supplier2 = new Supplier("supplier 2", "supplier2@gmail.com", "080812127572", lokasi);
-       DatabaseSupplier.addSupplier(supplier2);
-       Supplier supplier3 = new Supplier("supplier 3", "supplier3@gmail.com", "080812127573", lokasi);
-       
-       
-       DatabaseSupplier.addSupplier(supplier3);
-       
-       
-       
-       for (Supplier supplier : DatabaseSupplier.getSupplierDatabase())
-       
-       {
-           System.out.println(supplier);
-           
-       }
-       
-       
-       Customer customer1 = new Customer("nama 1", "email1@gmail.com", "user1", "Asdf1234", 1998, 6, 10);
-       DatabaseCustomer.addCustomer(customer1);
-       Customer customer2 = new Customer("nama 2", "email2@gmail.com", "user2", "Asdf1234", 1998, 6, 10);
-       DatabaseCustomer.addCustomer(customer2);
-       Customer customer3 = new Customer("nama 3", "email3@gmail.com", "user3", "Asdf1234", 1998, 6, 10);
-       
-       
-       DatabaseCustomer.addCustomer(customer3);
-       
-       for (Customer customer : DatabaseCustomer.getCustomerDatabase())
-       
-       {
-           System.out.println(customer);
-           
-       }
-       
-       DatabaseItem.addItem(new Item("item1", 10, ItemStatus.New, 10000, ItemCategory.Electronics, DatabaseSupplier.getSupplier(1)));
-       DatabaseItem.addItem(new Item("item2", 12, ItemStatus.New, 11000, ItemCategory.Electronics, DatabaseSupplier.getSupplier(2)));
-       DatabaseItem.addItem(new Item("item3", 14, ItemStatus.New, 12000, ItemCategory.Electronics, DatabaseSupplier.getSupplier(3)));
-       DatabaseItem.addItem(new Item("item4", 16, ItemStatus.New, 13000, ItemCategory.Electronics, DatabaseSupplier.getSupplier(1)));
-       
-       for (Item item : DatabaseItem.getItemDatabase())
-       
-       {
-           System.out.println(item);
-           
-       }
-       
-       
-       ArrayList<Integer> items = new ArrayList<>();
-       items.add(1);
-       items.add(2);
-       ArrayList<Integer> items1 = new ArrayList<>();
-       items.add(2);
-       ArrayList<Integer> items2 = new ArrayList<>();
-       items.add(2);
-       items.add(3);
-       
-       DatabaseInvoice.addInvoice(new Sell_Paid(items, DatabaseCustomer.getCustomer(1)));
-       DatabaseInvoice.addInvoice(new Sell_Unpaid(items1, DatabaseCustomer.getCustomer(2)));
-       DatabaseInvoice.addInvoice(new Sell_Installment(items2, 12, DatabaseCustomer.getCustomer(3)));
-       
-       for (Invoice invoice : DatabaseInvoice.getInvoiceDatabase())
-       
-       {
-           System.out.println(invoice);
-           
-       }
-       /*Supplier supplier1 = new Supplier(17, "sebuah supplier", "sebuah.email@gmail.com", "080812127575", lokasi);
-     
-       Item item1 = new Item(02, "sebuah item", 9, ItemStatus.New, 20000, ItemCategory.Electronics, supplier1);
-       databaseItem.addItem(item1);
-       
-       Transaction transaction = new Transaction(databaseItem);
-       transaction.orderNewItem(item1);
-       transaction.sellItemPaid(item1);
-       transaction.sellItemUnpaid(item1);
-       transaction.sellItemInstallment(item1);*/
+        Location lokasi = new Location("Depok", "Jawa Barat", "Di Barat Jawa");
+
+        try
+        {
+            DatabaseSupplier.addSupplier(new Supplier("supplier1", "email1@gmail.com",
+                    "081208120812", lokasi));
+        }
+        catch (SupplierAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+        try
+        {
+            DatabaseSupplier.addSupplier(new Supplier("supplier2", "email2@gmail.com",
+                    "081208120811", lokasi));
+        }
+        catch (SupplierAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+        try
+        {
+            DatabaseSupplier.addSupplier(new Supplier("supplier3", "email3@gmail.com",
+                    "081208120810", lokasi));
+        }
+        catch (SupplierAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+
+        for(Supplier data : DatabaseSupplier.getSupplierDatabase())
+        {
+            data.toString();
+        }
+
+        try
+        {
+            DatabaseCustomer.addCustomer(new Customer("customer1", "email1@gmail.com",
+                    "user1", "pass1", 1998, 8, 18));
+        }
+        catch (CustomerAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+        try
+        {
+            DatabaseCustomer.addCustomer(new Customer("customer2", "email2@gmail.com",
+                    "user2", "pass1", 1998, 8, 18));
+        }
+        catch (CustomerAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+        try
+        {
+            DatabaseCustomer.addCustomer(new Customer("customer3", "email3@gmail.com",
+                    "user3", "pass3", 1998, 8, 18));
+        }
+        catch (CustomerAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+
+        for(Customer data : DatabaseCustomer.getCustomerDatabase())
+        {
+            data.toString();
+        }
+
+        try
+        {
+            DatabaseItem.addItem(new Item("item1", ItemStatus.New , 5000,
+                    ItemCategory.Electronics, DatabaseSupplier.getSupplier(1)));
+        }
+        catch (ItemAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+        try
+        {
+            DatabaseItem.addItem(new Item("item2", ItemStatus.New , 5000,
+                    ItemCategory.Electronics, DatabaseSupplier.getSupplier(2)));
+        }
+        catch (ItemAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+        try
+        {
+            DatabaseItem.addItem(new Item("item3", ItemStatus.New , 5000,
+                    ItemCategory.Electronics, DatabaseSupplier.getSupplier(3)));
+        }
+        catch (ItemAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+
+        for(Item data : DatabaseItem.getItemDatabase())
+        {
+            data.toString();
+        }
+
+        ArrayList<Integer> item = new ArrayList<Integer>();
+        item.add(DatabaseItem.getItemFromID(1).getId());
+        item.add(DatabaseItem.getItemFromID(2).getId());
+        try
+        {
+            DatabaseInvoice.addInvoice(new Sell_Installment(item,
+                    5, DatabaseCustomer.getCustomer(1)));
+        }
+        catch (InvoiceAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
+
+        ArrayList<Integer> item2 = new ArrayList<Integer>();
+        item2.add(DatabaseItem.getItemFromID(1).getId());
+        item2.add(DatabaseItem.getItemFromID(3).getId());
+        try
+        {
+            DatabaseInvoice.addInvoice(new Sell_Unpaid(item2,
+                    DatabaseCustomer.getCustomer(2)));
+        }
+        catch (InvoiceAlreadyExistsException a)
+        {
+            System.out.println(a.getExMessage());
+        }
     }
 }

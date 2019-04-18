@@ -7,77 +7,93 @@ import java.util.*;
  */
 public class DatabaseSupplier
 {
-    private static ArrayList<Supplier> SUPPLIER_DATABASE=new ArrayList<Supplier>();
+    private static ArrayList<Supplier> SUPPLIER_DATABASE = new ArrayList<Supplier>();
     private static int LAST_SUPPLIER_ID = 0;
-    
+
+    /**
+     * Constructor for objects of class DatabaseSupplier
+     */
     public DatabaseSupplier()
     {
         // initialise instance variables
     }
-    
+
     /**
-     * return list of supplier
-     * @return      list of the suppliers
+     * Method untuk mengembalikan list supplier
+     *
+     * @return    list supplier
      */
-    public static ArrayList<Supplier> getSupplierDatabase(){
+    public static ArrayList<Supplier> getSupplierDatabase()
+    {
         return SUPPLIER_DATABASE;
     }
-    
+
+    /**
+     * Method untuk mengembalikan supplier
+     *
+     * @return    objek supplier
+     */
     public static int getLastSupplierID()
     {
         return LAST_SUPPLIER_ID;
     }
-    
+
     /**
-     * add supplier object
-     * @param   supplier   supplier's object
+     * Method untuk menambahkan supplier kedalam list
+     *
+     * @return    false
      */
-    public static boolean addSupplier(Supplier supplier)
+    public static boolean addSupplier(Supplier supplier) throws SupplierAlreadyExistsException
     {
-        for(Supplier temp : SUPPLIER_DATABASE) 
+        for(Supplier temp : SUPPLIER_DATABASE)
         {
-            if(temp.getName() == supplier.getName() && temp.getEmail() == supplier.getEmail()&&
-             temp.getPhoneNumber() == supplier.getPhoneNumber()) 
+            if((temp.getEmail() == supplier.getEmail()) ||
+                    (temp.getPhoneNumber() == supplier.getPhoneNumber()))
             {
-                return false;
+                throw new SupplierAlreadyExistsException(supplier);
             }
         }
         SUPPLIER_DATABASE.add(supplier);
-                LAST_SUPPLIER_ID = supplier.getId();
-                return true;
+        LAST_SUPPLIER_ID = supplier.getId();
+        return true;
     }
-    
+
     /**
-     * get supplier object
-     * @return      supplier's object
+     * Method untuk mengembalikan supplier
+     *
+     * @return    objek supplier
      */
-    public static Supplier getSupplier(int id){
-        for(Supplier temp : SUPPLIER_DATABASE) 
+    public static Supplier getSupplier(int id)
+    {
+        for(Supplier temp : SUPPLIER_DATABASE)
         {
-            if(temp.getId() == id) 
+            if(temp.getId() == id)
             {
                 return temp;
             }
         }
         return null;
     }
-    
+
     /**
-     * remove supplier
-     * removing supplier
+     * Method untuk menghapus supplier dari list
+     *
      */
-    public static boolean removeSupplier(int id)
+    public static boolean removeSupplier(int id) throws SupplierNotFoundException, ItemNotFoundException
     {
-        for(Supplier temp : SUPPLIER_DATABASE) 
+        for(Supplier temp : SUPPLIER_DATABASE)
         {
-            if(temp.getId() == id) 
+            if(temp.getId() == id)
             {
-                DatabaseItem.getItemFromSupplier(temp).clear();
+                ArrayList<Item> list = DatabaseItem.getItemFromSupplier(temp);
+                for(Item temp1 : list)
+                {
+                    DatabaseItem.removeItem(temp.getId());
+                }
+                SUPPLIER_DATABASE.remove(temp);
                 return true;
-                
             }
         }
-        return false;
+        throw new SupplierNotFoundException(id);
     }
-    
 }

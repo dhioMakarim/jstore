@@ -10,7 +10,6 @@ public class Item
     // instance variables
     private int id;
     private String name;
-    private int stock;
     private int price;
     private ItemCategory category;
     private ItemStatus status;
@@ -19,12 +18,11 @@ public class Item
     /**
      * Constructor for objects of class Item
      */
-    public Item(String name, int stock, ItemStatus status,
+    public Item(String name, ItemStatus status,
         int price, ItemCategory category, Supplier supplier)
     {
        // initialise instance variables
        this.id = DatabaseItem.getLastItemID() + 1;
-       this.stock = stock;
        this.price = price;
        this.status = status;
        this.name = name;
@@ -67,29 +65,8 @@ public class Item
         this.name = name;
     }
 
-    /**
-     * get item's stock
-     * @return      item's number of stock
-     */
-    public int getStock() 
-    {
-        return stock;
-    }
 
-    /**
-     * set item's stock
-     * @param   stock    number of item's stock
-     */
-    public void setStock(int stock) 
-    {
-        this.stock = stock;
-    }
-
-    /**
-     * get price's item
-     * @return      price of the item
-     */
-    public int getPrice() 
+    public int getPrice()
     {
         return price;
     }
@@ -162,7 +139,6 @@ public class Item
         return"==========ITEM==========" +
         "\nID:" + id +
         "\nName:" + name +
-        "\nStock:" + stock +
         "\nPrice:" + price +
         "\nCategory:" + category +
         "\nStatus:" + status +

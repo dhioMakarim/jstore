@@ -10,17 +10,49 @@ import java.util.*;
 public class Transaction
 {
     private static ArrayList<Integer> listItem = new ArrayList<Integer>();
-    private static Buy_Paid order;
-    private static Sell_Paid sellPaid;
-    private static Sell_Unpaid sellUnpaid;
-    private static Sell_Installment sellInstall;
-    
+
     /**
      * Constructor for objects of class Transaction
      */
     public Transaction()
     {
-        
+
+    }
+
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     //     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void orderNewItem(ArrayList<Integer> item)throws InvoiceAlreadyExistsException
+    {
+        Invoice order = new Buy_Paid(listItem);
+        DatabaseInvoice.addInvoice(order);
+    }
+
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     //     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void orderSecondItem(ArrayList<Integer> item)throws InvoiceAlreadyExistsException
+    {
+        Invoice order = new Buy_Paid(listItem);
+        DatabaseInvoice.addInvoice(order);
+    }
+
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     //     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
+     */
+    public static void orderRefurbishedItem(ArrayList<Integer> item)throws InvoiceAlreadyExistsException
+    {
+        Invoice order = new Buy_Paid(listItem);
+        DatabaseInvoice.addInvoice(order);
     }
 
     /**
@@ -29,79 +61,37 @@ public class Transaction
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static void orderNewItem(Item item)
+    public static void sellItemPaid(ArrayList<Integer> item, Customer customer)throws InvoiceAlreadyExistsException
     {
-        listItem.add(item.getId());
-        order = new Buy_Paid(listItem);
-        DatabaseInvoice.addInvoice(order);
-    }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public static void orderSecondItem(Item item)
-    {
-        listItem = DatabaseInvoice.getInvoice(DatabaseInvoice.getLastInvoiceID()).getItem();
-        listItem.add(item.getId());
-        order.setItem(listItem);
-    }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public static void orderRefurbishedItem(Item item)
-    {
-        listItem = DatabaseInvoice.getInvoice(DatabaseInvoice.getLastInvoiceID()).getItem();
-        listItem.add(item.getId());
-        order.setItem(listItem);
-    }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public static void sellItemPaid(Item item, Customer customer)
-    {
-        listItem.add(item.getId());
-        sellPaid = new Sell_Paid(listItem, customer);
+        Invoice sellPaid = new Sell_Paid(listItem, customer);
         DatabaseInvoice.addInvoice(sellPaid);
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static void sellItemUnpaid(Item item, Customer customer)
+    public static void sellItemUnpaid(ArrayList<Integer> item, Customer customer)throws InvoiceAlreadyExistsException
     {
-        listItem.add(item.getId());
-        sellUnpaid = new Sell_Unpaid(listItem, customer);
+        Invoice sellUnpaid = new Sell_Unpaid(listItem, customer);
         DatabaseInvoice.addInvoice(sellUnpaid);
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static void sellItemInstallment(Item item, Customer customer, 
-    int installmentPeriod)
+    public static void sellItemInstallment(ArrayList<Integer> item, Customer customer,
+                                           int installmentPeriod)throws InvoiceAlreadyExistsException
     {
-        listItem.add(item.getId());
-        sellInstall = new Sell_Installment(listItem, installmentPeriod, customer);
+        Invoice sellInstall = new Sell_Installment(listItem, installmentPeriod, customer);
         DatabaseInvoice.addInvoice(sellInstall);
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
@@ -115,18 +105,24 @@ public class Transaction
         {
             return false;
         }
-        invoice.setIsActive(false);
-        System.out.println("isActive : " + invoice.getIsActive());
-        return true;
+        if(invoice.getInvoiceStatus() == InvoiceStatus.Unpaid
+                || invoice.getInvoiceStatus() == InvoiceStatus.Installment)
+        {
+            invoice.setIsActive(false);
+            invoice.toString();
+            System.out.println("isActive : " + invoice.getIsActive());
+            return true;
+        }
+        return false;
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static boolean cancelTransaction(Invoice invoice)
+    public static boolean cancelTransaction(Invoice invoice)throws InvoiceNotFoundException
     {
         invoice = DatabaseInvoice.getInvoice(invoice.getId());
         if(invoice == null)

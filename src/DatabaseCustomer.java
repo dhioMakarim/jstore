@@ -7,7 +7,8 @@ import java.util.*;
  */
 public class DatabaseCustomer
 {
-    private static ArrayList<Customer> CUSTOMER_DATABASE=new ArrayList<Customer>();
+    // instance variables - replace the example below with your own
+    private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
     private static int LAST_CUSTOMER_ID = 0;
 
     /**
@@ -19,79 +20,81 @@ public class DatabaseCustomer
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Method untuk mengembalikan list supplier
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return    list supplier
      */
-    public static ArrayList<Customer> getCustomerDatabase(){
+    public static ArrayList<Customer> getCustomerDatabase()
+    {
         return CUSTOMER_DATABASE;
     }
-    
+
     /**
-     * An example of a method - replace this comment with your own
+     * Method untuk mengembalikan supplier
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return    objek supplier
      */
     public static int getLastCustomerID()
     {
         return LAST_CUSTOMER_ID;
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
-     * @param  y  a sample parameter for a method
+     //     * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static boolean addCustomer(Customer customer)
+    public static boolean addCustomer(Customer customer)throws CustomerAlreadyExistsException
     {
-        for(Customer temp : CUSTOMER_DATABASE) 
+        boolean found = false;
+        for(Customer temp : CUSTOMER_DATABASE)
         {
-            if(temp.getName() == customer.getName() && temp.getEmail() == customer.getEmail()) 
+            if(temp.getName() == customer.getName() || temp.getEmail()
+                    == customer.getEmail())
             {
-                return false;
+                throw new CustomerAlreadyExistsException(customer);
             }
         }
         CUSTOMER_DATABASE.add(customer);
-                LAST_CUSTOMER_ID = customer.getId();
-                return true;
+        LAST_CUSTOMER_ID = customer.getId();
+        return true;
     }
-    
+
     /**
      * An example of a method - replace this comment with your own
      *
-     * @param  y  a sample parameter for a method
+     //     * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
     public static Customer getCustomer(int id)
     {
-        for(Customer temp : CUSTOMER_DATABASE) 
+        for(Customer temp : CUSTOMER_DATABASE)
         {
-            if(temp.getId() == id) 
+            if(temp.getId() == id)
             {
                 return temp;
             }
         }
         return null;
     }
-    
+
     /**
-     * remove customer
-     * removing customer
+     * An example of a method - replace this comment with your own
+     *
+     //     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
      */
-    public static boolean removeCustomer(int id)
+    public static boolean removeCustomer(int id)throws CustomerNotFoundException
     {
-        for(Customer temp : CUSTOMER_DATABASE) 
+        for(Customer temp : CUSTOMER_DATABASE)
         {
-            if(temp.getId() == id) 
+            if(temp.getId() == id)
             {
                 CUSTOMER_DATABASE.remove(temp);
                 return true;
-                
             }
         }
-        return false;
+        throw new CustomerNotFoundException(id);
     }
 }

@@ -70,7 +70,7 @@ public abstract class Invoice
     /**
      * An 
      *
-     * @param  y  a sa
+     * @param
      * @return    the 
      */
     public abstract InvoiceStatus getInvoiceStatus();
@@ -78,7 +78,7 @@ public abstract class Invoice
     /**
      * An 
      *
-     * @param  y  a 
+     * @param
      * @return    th
      */
     public abstract InvoiceType getInvoiceType();
@@ -86,7 +86,7 @@ public abstract class Invoice
     /**
      * Method untuk mengubah id invoice
      *
-     * @param  id  id dari suatu invoice
+     * @param
      */
     public boolean getIsActive()
     {
@@ -96,7 +96,7 @@ public abstract class Invoice
     /**
      * Method untuk mengubah id invoice
      *
-     * @param  id  id dari suatu invoice
+     * @param
      */
     public Customer getCustomer()
     {
@@ -106,7 +106,7 @@ public abstract class Invoice
     /**
      * Method untuk mengubah id invoice
      *
-     * @param  id  id dari suatu invoice
+     * @param
      */
     public void setId(int id)
     {
