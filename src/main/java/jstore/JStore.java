@@ -31,5 +31,80 @@ public class JStore
     public static void main(String[] args)
     {
         SpringApplication.run(JStore.class, args);
+
+        Location lokasi1 = new Location("Depok", "Jawa Barat", "Jawa bagian barat");
+
+
+        try
+        {
+            DatabaseSupplier.addSupplier(new Supplier("nama1",
+                    "nama1@mail.com", "080800001111",
+                    lokasi1));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
+        try
+        {
+            DatabaseSupplier.addSupplier(new Supplier("nama2",
+                    "nama2@mail.com", "080800002222",
+                    lokasi1));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
+        try
+        {
+            DatabaseSupplier.addSupplier(new Supplier("nama3",
+                    "nama3@mail.com", "080800003333",
+                    lokasi1));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
+
+        try
+        {
+            DatabaseItem.addItem(new Item("item1",  ItemStatus.New,
+                    5000, ItemCategory.Electronics,
+                    DatabaseSupplier.getSupplier(1)));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
+        try
+        {
+            DatabaseItem.addItem(new Item("item2",  ItemStatus.New,
+                    5000, ItemCategory.Electronics,
+                    DatabaseSupplier.getSupplier(2)));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
+        try
+        {
+            DatabaseItem.addItem(new Item("item3",  ItemStatus.New,
+                    5000, ItemCategory.Electronics,
+                    DatabaseSupplier.getSupplier(3)));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
+        try
+        {
+            DatabaseItem.addItem(new Item("item4",  ItemStatus.New,
+                    5000, ItemCategory.Electronics,
+                    DatabaseSupplier.getSupplier(1)));
+        }
+        catch (Exception ex)
+        {
+            ex.getMessage();
+        }
     }
 }
