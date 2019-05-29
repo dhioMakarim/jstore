@@ -1,5 +1,4 @@
 package jstore;
-
 /**
  * Enumeration class ItemStatus - write a description of the enum class here
  *
@@ -8,17 +7,17 @@ package jstore;
  */
 public enum ItemStatus
 {
-    
     New("New"), Second("Second"), Refurbished("Refurbished"), Sold("Sold");
-    private String value;
     
-    private ItemStatus(String value)
+    private String description;
+    
+    private ItemStatus(String description)
     {
-        this.value = value;
+        this.description = description;
     }
+    
     public String toString()
     {
-        return value;
+        return description;
     }
-    
 }

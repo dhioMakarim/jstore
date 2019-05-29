@@ -21,7 +21,7 @@ public class Buy_Paid extends Invoice
     public Buy_Paid(ArrayList<Integer> item)
     {
         super(item);
-
+        isActive = false;
     }
     
     public InvoiceStatus getInvoiceStatus(){
@@ -49,7 +49,7 @@ public class Buy_Paid extends Invoice
             System.out.println("Supplier Name = " +
             DatabaseItem.getItemFromID(tempID).getSupplier().getName());
         }
-        System.out.println("Buy date = " + dateFormat.format(super.getDate().getTime()));
+        //System.out.println("Buy date = " + dateFormat.format(super.getDate()).getTime());
         System.out.println("Price total = " + super.getTotalPrice());
         System.out.println("Status = " + this.getInvoiceStatus());
         System.out.println("Buy success.");

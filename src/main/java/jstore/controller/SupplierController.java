@@ -22,9 +22,16 @@ public class SupplierController {
         return list;
     }
 
-    @RequestMapping(value = "/supplier/{id_supplier}", method=  RequestMethod.GET)
-    public Supplier getSupplier(@PathVariable int id_supplier) {
-        Supplier supplier = DatabaseSupplier.getSupplier(id_supplier);
+    @RequestMapping(value = "/suppliers/{id_supplier}", method= RequestMethod.GET)
+    public Supplier getItemFromID(@PathVariable int id_supplier)
+    {
+        Supplier supplier;
+        try {
+            supplier = DatabaseSupplier.getSupplier(id_supplier);
+        } catch (Exception ex) {
+            ex.getMessage();
+            return null;
+        }
         return supplier;
     }
 

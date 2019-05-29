@@ -1,12 +1,14 @@
 package jstore;
-
-import java.util.*;
 /**
- * Database item yg di toko.
+ * Kelas database item ini berfungsi untuk menambahkan dan menghapus item pada list
+ * kemudian dapat mengembalikan nilainya serta menampilkan listnya.
  *
  * @author Dhio Makarim Utomo
- * @version 0.1.2 28/02/2019
+ * @version 28-Feb-2019
  */
+
+import java.util.*;
+
 public class DatabaseItem
 {
     private static ArrayList<Item> ITEM_DATABASE = new ArrayList<Item>();
@@ -29,7 +31,7 @@ public class DatabaseItem
     {
         return ITEM_DATABASE;
     }
-
+    
     /**
      * Method untuk mengembalikan list supplier
      *
@@ -39,13 +41,13 @@ public class DatabaseItem
     {
         return LAST_ITEM_ID;
     }
-
+    
     /**
      * Method untuk menambahkan item kedalam list
      *
      * @return    false
      */
-    public static boolean addItem(Item item) throws ItemAlreadyExistsException
+    public static boolean addItem(Item item)throws ItemAlreadyExistsException
     {
         for(Item temp : ITEM_DATABASE)
         {
@@ -61,7 +63,7 @@ public class DatabaseItem
         LAST_ITEM_ID = item.getId();
         return true;
     }
-
+    
     /**
      * Method untuk mengembalikan list supplier
      *
@@ -69,16 +71,16 @@ public class DatabaseItem
      */
     public static Item getItemFromID(int id)
     {
-        for(Item temp : ITEM_DATABASE)
+        for(Item temp : ITEM_DATABASE) 
         {
-            if(temp.getId() == id)
+            if(temp.getId() == id) 
             {
                 return temp;
             }
         }
         return null;
     }
-
+    
     /**
      * Method untuk mengembalikan list supplier
      *
@@ -88,9 +90,9 @@ public class DatabaseItem
     {
         ArrayList<Item> list = new ArrayList<Item>();
         boolean found = false;
-        for(Item temp : ITEM_DATABASE)
+        for(Item temp : ITEM_DATABASE) 
         {
-            if(temp.getSupplier() == supplier)
+            if(temp.getSupplier() == supplier) 
             {
                 list.add(temp);
                 found = true;
@@ -105,7 +107,7 @@ public class DatabaseItem
             return null;
         }
     }
-
+    
     /**
      * Method untuk mengembalikan list supplier
      *
@@ -115,9 +117,9 @@ public class DatabaseItem
     {
         ArrayList<Item> list = new ArrayList<Item>();
         boolean found = false;
-        for(Item temp : ITEM_DATABASE)
+        for(Item temp : ITEM_DATABASE) 
         {
-            if(temp.getCategory() == category)
+            if(temp.getCategory() == category) 
             {
                 list.add(temp);
                 found = true;
@@ -132,7 +134,7 @@ public class DatabaseItem
             return null;
         }
     }
-
+    
     /**
      * Method untuk mengembalikan list supplier
      *
@@ -142,9 +144,9 @@ public class DatabaseItem
     {
         ArrayList<Item> list = new ArrayList<Item>();
         boolean found = false;
-        for(Item temp : ITEM_DATABASE)
+        for(Item temp : ITEM_DATABASE) 
         {
-            if(temp.getStatus() == status)
+            if(temp.getStatus() == status) 
             {
                 list.add(temp);
                 found = true;
@@ -159,17 +161,17 @@ public class DatabaseItem
             return null;
         }
     }
-
+    
     /**
      * Method untuk menghapus item dari list
      *
      * @return    false
      */
-    public static boolean removeItem(int id) throws ItemNotFoundException
+    public static boolean removeItem(int id)throws ItemNotFoundException
     {
-        for(Item temp : ITEM_DATABASE)
+        for(Item temp : ITEM_DATABASE) 
         {
-            if(temp.getId() == id)
+            if(temp.getId() == id) 
             {
                 ITEM_DATABASE.remove(temp);
                 return true;

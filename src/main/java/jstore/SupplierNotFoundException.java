@@ -5,13 +5,13 @@ public class SupplierNotFoundException extends Exception{
 
     public SupplierNotFoundException(int supplier_input)
     {
-        super();
+        super("Supplier ID: ");
         this.supplier_error = supplier_input;
     }
 
     public String getExMessage()
     {
-        return super.getMessage() + "Supplier ID: " +
+        return super.getMessage() +
                 supplier_error + " not found.";
     }
 }

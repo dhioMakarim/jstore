@@ -18,11 +18,12 @@ public class InvoiceController {
         try {
             customer = DatabaseCustomer.getCustomer(id_customer);
             list = DatabaseInvoice.getActiveOrder(customer);
+            return list;
         } catch (Exception ex) {
             ex.getMessage();
             return null;
         }
-        return list;
+
     }
 
     @RequestMapping(value = "/invoice/{id_invoice}", method= RequestMethod.GET)
@@ -54,6 +55,7 @@ public class InvoiceController {
 
         try {
             DatabaseInvoice.addInvoice(invoice);
+            invoice.setTotalPrice(0);
         } catch (Exception ex) {
             ex.getMessage();
             return null;
@@ -77,6 +79,7 @@ public class InvoiceController {
 
         try {
             DatabaseInvoice.addInvoice(invoice);
+            invoice.setTotalPrice(0);
         } catch (Exception ex) {
             ex.getMessage();
             return null;
@@ -101,6 +104,7 @@ public class InvoiceController {
 
         try {
             DatabaseInvoice.addInvoice(invoice);
+            invoice.setTotalPrice(installment_period);
         } catch (Exception ex) {
             ex.getMessage();
             return null;
@@ -108,7 +112,7 @@ public class InvoiceController {
         return invoice;
     }
 
-    @RequestMapping(value = "/canceltransaction", method= RequestMethod.POST)
+    @RequestMapping(value = "/canceltransaction/{id_invoice}", method= RequestMethod.POST)
     public Invoice cancelTransaction(@PathVariable int id_invoice)
     {
         Invoice invoice;
@@ -122,7 +126,7 @@ public class InvoiceController {
         return invoice;
     }
 
-    @RequestMapping(value = "/finishtransaction", method= RequestMethod.POST)
+    @RequestMapping(value = "/finishtransaction/{id_invoice}", method= RequestMethod.POST)
     public Invoice finishTransaction(@PathVariable int id_invoice)
     {
         Invoice invoice;
@@ -135,5 +139,4 @@ public class InvoiceController {
         }
         return invoice;
     }
-
 }

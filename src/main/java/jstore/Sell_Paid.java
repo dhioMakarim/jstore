@@ -1,71 +1,105 @@
 package jstore;
-
-import java.text.*;
-import java.util.*;
 /**
  * Write a description of class Sell_Paid here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.util.*;
+import java.text.*;
+
 public class Sell_Paid extends Invoice
 {
-    private static final InvoiceType INVOICE_TYPE = InvoiceType.Sell;
-    private static final InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
+    private static InvoiceType INVOICE_TYPE = InvoiceType.Sell;
+    private static InvoiceStatus INVOICE_STATUS = InvoiceStatus.Paid;
     private Customer customer;
-    private boolean isActive = false;
+    private boolean isActive;
     private SimpleDateFormat dateFormat = new SimpleDateFormat ("dd MMM yyy");
+
     /**
      * Constructor for objects of class Sell_Paid
      */
     public Sell_Paid(ArrayList<Integer> item, Customer customer)
     {
         super(item);
-        
+        this.isActive = false;
+        this.customer = customer;
     }
 
-    public InvoiceStatus getInvoiceStatus()
-    {
-        return this.INVOICE_STATUS;
-    }
-    
-    public InvoiceType getInvoiceType()
-    {
-        return this.INVOICE_TYPE;
-    }
-    
-    public Customer customer()
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
+    public Customer getCustomer()
     {
         return customer;
     }
     
+    /**
+     * An 
+     *
+     * @param  y  a sa
+     * @return    the 
+     */
+    @Override
+    public InvoiceStatus getInvoiceStatus()
+    {
+        return INVOICE_STATUS;
+    }
+    
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
+    @Override
+    public InvoiceType getInvoiceType()
+    {
+        return INVOICE_TYPE;
+    }
+    
+    /**
+     * An 
+     *
+     * @param  y  a 
+     * @return    th
+     */
     public void setCustomer(Customer customer)
     {
         this.customer = customer;
     }
     
-    
+    /**
+     * Me
+     *
+     */    
+    @Override
     public String toString()
     {
-        String string="ID = " + super.getId();
+        System.out.println("==========INVOICE==========");
+        System.out.println("ID = " + super.getId());
         ArrayList<Integer> listItemID = DatabaseInvoice.getInvoice(super.getId()).getItem();
-        for (int tempID : listItemID)
+        for(int tempID : listItemID)
         {
-            string += "\nItem: " +
-            DatabaseItem.getItemFromID(tempID).getName();
-            string += "\nPrice = " +
-            DatabaseItem.getItemFromID(tempID).getPrice();
-            string += "\nSupplier ID = " +
-            DatabaseItem.getItemFromID(tempID).getSupplier().getId();
-            string += "\nSupplier Name = " +
-            DatabaseItem.getItemFromID(tempID).getSupplier().getName();
+            System.out.println("Item = " + 
+            DatabaseItem.getItemFromID(tempID).getName());
+            System.out.println("Price = " + 
+            DatabaseItem.getItemFromID(tempID).getPrice());
+            System.out.println("Supplier ID = " + 
+            DatabaseItem.getItemFromID(tempID).getSupplier().getId());
+            System.out.println("Supplier name = " + 
+            DatabaseItem.getItemFromID(tempID).getSupplier().getName());
         }
-        string += "\nBuy date = " + dateFormat.format(super.getDate().getTime());
-        string += "\nPrice total = " + super.getTotalPrice();
-        string += "\nCustomer ID = " + customer.getId();
-        string += "\nCustomer name = " + customer.getName();
-        string += "\nStatus = " + this.getInvoiceStatus();
-        string += "\nSell success.";
-        return string;
+        System.out.println("Buy date = " + getDate());
+        System.out.println("Price total = " + super.getTotalPrice());
+        System.out.println("Customer ID = " + customer.getId());
+        System.out.println("Customer name = " + customer.getName());
+        System.out.println("Status = " + this.getInvoiceStatus());
+        System.out.println("Sell success.");
+        return "";
     }
 }

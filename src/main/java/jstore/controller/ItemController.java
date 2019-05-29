@@ -23,9 +23,15 @@ public class ItemController {
     }
 
     @RequestMapping(value = "/items/{id_item}", method= RequestMethod.GET)
-    public Item getItemFromID(@PathVariable int id_item) {
-        Item item = DatabaseItem.getItemFromID(id_item);
+    public Item getItemFromID(@PathVariable int id_item)
+    {
+        Item item;
+        try {
+            item = DatabaseItem.getItemFromID(id_item);
+        } catch (Exception ex) {
+            ex.getMessage();
+            return null;
+        }
         return item;
     }
-
 }

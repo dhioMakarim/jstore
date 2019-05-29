@@ -1,13 +1,13 @@
 package jstore;
 /**
- * Lokasi yang dari supplier.
+ * Kelas ini berfungsi untuk mendaftarkan lokasi sebagai
+ * data dari supplier
  *
  * @author Dhio Makarim Utomo
- * @version 0.1.2 28/02/2019
+ * @version 28-Feb-2019
  */
 public class Location
 {
-    // instance variables
     private String province;
     private String description;
     private String city;
@@ -17,15 +17,15 @@ public class Location
      */
     public Location(String city, String province, String description)
     {
-        // initialise instance variables
         this.city = city;
         this.province = province;
         this.description = description;
     }
 
     /**
-     * get location province
-     * @return    location's province
+     * Method untuk mengembalikan nama provinsi
+     *
+     * @return    nama provinsi
      */
     public String getProvince()
     {
@@ -33,8 +33,9 @@ public class Location
     }
     
     /**
-     * get location city
-     * @return    location's city
+     * Method untuk mengembalikan nama kota
+     *
+     * @return    nama kota
      */
     public String getCity()
     {
@@ -42,8 +43,9 @@ public class Location
     }
     
     /**
-     * get location description
-     * @return    location's description
+     * Method untuk mengembalikan deskripsi kota
+     *
+     * @return    deskripsi kota
      */
     public String getDescription()
     {
@@ -51,8 +53,9 @@ public class Location
     }
     
     /**
-     * set location province
-     * @param   province   location's province
+     * Method untuk mengubah nama provinsi
+     *
+     * @param  province  nama provinsi
      */
     public void setProvince(String province)
     {
@@ -60,8 +63,9 @@ public class Location
     }
     
     /**
-     * set location city
-     * @param   city   location's city
+     * Method untuk mengubah nama kota
+     *
+     * @param  city  nama kota
      */
     public void setCity(String city)
     {
@@ -69,8 +73,9 @@ public class Location
     }
     
     /**
-     * set location description
-     * @param   description   location's description
+     * Method untuk mengubah deskripsi kota
+     *
+     * @param  description  deskripsi kota
      */
     public void setDescription(String description)
     {
@@ -78,20 +83,9 @@ public class Location
     }
     
     /**
-     * printing province data
+     * Method untuk menampilkan nama provinsi
+     *
      */
-    /* public void printData(){
-        System.out.print("LOCATION");
-        System.out.println("");
-        System.out.print("Provinsi : ");
-        System.out.println(this.province);
-        System.out.print("Kota : ");
-        System.out.println(this.city);
-        System.out.print("Deskripsi");
-        System.out.println("");
-        System.out.print("Lokasi");
-        System.out.println("");
-    } */
     public String toString()
     {
         System.out.println("==========LOCATION==========");

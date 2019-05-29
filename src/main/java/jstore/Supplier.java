@@ -1,19 +1,23 @@
 package jstore;
 /**
- * Data supplier dari toko.
+ * Kelas supplier ini berfungsi untuk mendaftarkan supplier jstore dengan
+ * pembeda berupa id dan nama serta beberapa informasi lebih detail berupa 
+ * email, nomor telepon serta lokasi.
+ * Selain itu supplier yang telah didaftarkan dapat dikembalikan nilai tiap
+ * parameternya menggunakan method get serta dapat juga diubah nilainya
+ * menggunakan method set.
  *
  * @author Dhio Makarim Utomo
- * @version 0.1.2 28/02/2019
+ * @version 28-Feb-2019
  */
 public class Supplier
 {
-    // instance variables
     private int id;
     private String name;
     private String email;
     private String phoneNumber;
     private Location location;
-    
+
     /**
      * Constructor for objects of class Supplier
      */
@@ -27,117 +31,117 @@ public class Supplier
     }
 
     /**
-     * return supplier id
-     * @return      supplier's id
+     * Method untuk mengembalikan id supplier
+     *
+     * @return    id supplier
      */
-    public int getId() 
+    public int getId()
     {
         return id;
     }
-
+    
     /**
-     * set supplier id
-     * @param   id   supplier's id
+     * Method untuk mengembalikan nama supplier
+     *
+     * @return    nama supplier
      */
-    public void setId(int id) 
-    {
-        this.id = id;
-    }
-
-    /**
-     * get supplier name
-     * @return      supplier's name
-     */
-    public String getName() 
+    public String getName()
     {
         return name;
     }
-
+    
     /**
-     * set supplier name
-     * @param   name   supplier's name
+     * Method untuk mengembalikan email supplier
+     *
+     * @return    email supplier
      */
-    public void setName(String name) 
-    {
-        this.name = name;
-    }
-
-    /**
-     * get supplier email
-     * @return      supplier's email
-     */
-    public String getEmail() 
+    public String getEmail()
     {
         return email;
     }
-
+    
     /**
-     * set supplier email
-     * @param   email   supplier's email
+     * Method untuk mengembalikan nomor telepon supplier
+     *
+     * @return    nomor telepon supplier
      */
-    public void setEmail(String email) 
-    {
-        this.email = email;
-    }
-
-    /**
-     * get supplier phone number
-     * @return      supplier's phone number
-     */
-    public String getPhoneNumber() 
+    public String getPhoneNumber()
     {
         return phoneNumber;
     }
-
+    
     /**
-     * set supplier phone number
-     * @param   phoneNumber   supplier's phoneNumber
+     * Method untuk mengembalikan lokasi supplier
+     *
+     * @return    objek lokasi supplier
      */
-    public void setPhoneNumber(String phoneNumber) 
-    {
-        this.phoneNumber = phoneNumber;
-    }
-
-    /**
-     * get supplier object
-     * @return      supplier's location object
-     */
-    public Location getLocation() 
+    public Location getLocation()
     {
         return location;
     }
-
+    
     /**
-     * set supplier location
-     * @param   location   supplier's location
+     * Method untuk mengubah id supplier
+     *
+     * @param  id  id dari suatu supplier
      */
-    public void setLocation(Location location) {
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    
+    /**
+     * Method untuk mengubah nama supplier
+     *
+     * @param  name  nama dari suatu supplier
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    /**
+     * Method untuk mengubah email supplier
+     *
+     * @param  email  email dari suatu supplier
+     */
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+    
+    /**
+     * Method untuk mengubah nomor telepon supplier
+     *
+     * @param  phoneNumber  nomor telepon dari suatu supplier
+     */
+    public void setPhoneNumber(String phoneNumber)
+    {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    /**
+     * Method untuk mengubah lokasi supplier
+     *
+     * @param  location  objek lokasi dari suatu supplier
+     */
+    public void setLocation(Location location)
+    {
         this.location = location;
     }
     
     /**
-     * print supplier's name
+     * Method untuk menampilkan nama supplier
+     *
      */
-    /* public void printData(){
-        System.out.print("SUPPLIER dan ID");
-        System.out.println("");
-        System.out.print("Nama : ");
-        System.out.println(this.name);
-        System.out.print("Email : ");
-        System.out.println(this.email);
-        System.out.print("No telfon");
-        System.out.println(this.phoneNumber);
-        System.out.print("Lokasi");
-        System.out.println("");
-    } */
     public String toString()
     {
-        return "==========SUPPLIER==========" +
-        "\nID: " + id +
-        "\nName: " + name +
-        "\nEmail: " + email +
-        "\nPhoneNumber: " + phoneNumber +
-        "\nLocation: " + location.getCity();
-        
+        System.out.println("==========SUPPLIER==========");
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("PhoneNumber: " + phoneNumber);
+        System.out.println("Location: " + location.getCity());
+        return "";
     }
 }

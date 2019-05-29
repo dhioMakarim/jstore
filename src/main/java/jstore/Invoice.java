@@ -1,13 +1,13 @@
 package jstore;
-
-import java.util.*;
 /**
- * Data invoice dari toko.
+ * Kelas ini berfungsi untuk membuat invoice dari tiap transaksi.
  *
  * @author Dhio Makarim Utomo
- * @version 0.1.2 28/02/2019
+ * @version 28-Feb-2019
  */
 
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public abstract class Invoice
 {
@@ -18,15 +18,16 @@ public abstract class Invoice
     private boolean isActive;
     private Customer customer;
     private static InvoiceStatus status;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat ("dd MMM yyy");
 
     /**
      * Constructor for objects of class Invoice
      */
     public Invoice(ArrayList<Integer> item)
     {
-        this.id  = DatabaseInvoice.getLastInvoiceID() + 1;
+        this.id = DatabaseInvoice.getLastInvoiceID() + 1;
         this.item = item;
-        this.date  = new GregorianCalendar();
+        this.date = new GregorianCalendar();
     }
 
     /**
@@ -54,9 +55,9 @@ public abstract class Invoice
      *
      * @return    tanggal invoice
      */
-    public Calendar getDate()
+    public String getDate()
     {
-        return date;
+        return dateFormat.format(date.getTime());
     }
     
     /**
@@ -72,7 +73,7 @@ public abstract class Invoice
     /**
      * An 
      *
-     * @param
+     * @param  y  a sa
      * @return    the 
      */
     public abstract InvoiceStatus getInvoiceStatus();
@@ -80,7 +81,7 @@ public abstract class Invoice
     /**
      * An 
      *
-     * @param
+     * @param  y  a 
      * @return    th
      */
     public abstract InvoiceType getInvoiceType();
@@ -88,7 +89,7 @@ public abstract class Invoice
     /**
      * Method untuk mengubah id invoice
      *
-     * @param
+     * @param  id  id dari suatu invoice
      */
     public boolean getIsActive()
     {
@@ -98,7 +99,7 @@ public abstract class Invoice
     /**
      * Method untuk mengubah id invoice
      *
-     * @param
+     * @param  id  id dari suatu invoice
      */
     public Customer getCustomer()
     {
@@ -108,11 +109,11 @@ public abstract class Invoice
     /**
      * Method untuk mengubah id invoice
      *
-     * @param
+     * @param  id  id dari suatu invoice
      */
     public void setId(int id)
     {
-        this.id  = id;
+        this.id = id;
     }
     
     /**
@@ -132,7 +133,7 @@ public abstract class Invoice
      */
     public void setDate(Calendar date)
     {
-        this.date  = date;
+        this.date = date;
     }
     
     /**
@@ -143,7 +144,7 @@ public abstract class Invoice
     public void setTotalPrice(int totalPrice)
     {
         ArrayList<Integer> listItemID = DatabaseInvoice.getInvoice(id).getItem();
-        for (int tempID : listItemID)
+        for(int tempID : listItemID)
         {
             this.totalPrice = totalPrice + DatabaseItem.getItemFromID(tempID).getPrice();
         }

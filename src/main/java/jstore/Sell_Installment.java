@@ -1,13 +1,14 @@
 package jstore;
-
-import java.text.*;
-import java.util.*;
 /**
  * Write a description of class Sell_Installment here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
+
+import java.util.*;
+import java.text.*;
+
 public class Sell_Installment extends Invoice
 {
     private static InvoiceType INVOICE_TYPE = InvoiceType.Sell;
@@ -15,17 +16,18 @@ public class Sell_Installment extends Invoice
     private int installmentPeriod;
     private int installmentPrice;
     private Customer customer;
-    private boolean isActive; 
     private SimpleDateFormat dateFormat = new SimpleDateFormat ("dd MMM yyy");
     
     /**
      * Constructor for objects of class Sell_Installment
      */
-    public Sell_Installment(ArrayList<Integer> item, int installmentPeriod, Customer customer)
+    public Sell_Installment(ArrayList<Integer> item, int installmentPeriod,
+    Customer customer)
     {
         super(item);
         this.installmentPeriod = installmentPeriod;
-        this.isActive = true;
+        super.setIsActive(true);
+        this.customer = customer;
     }
 
     /**
@@ -124,20 +126,21 @@ public class Sell_Installment extends Invoice
     @Override
     public String toString()
     {
+        System.out.println("==========INVOICE==========");
         System.out.println("ID = " + super.getId());
         ArrayList<Integer> listItemID = DatabaseInvoice.getInvoice(super.getId()).getItem();
-        for (int tempID : listItemID)
+        for(int tempID : listItemID)
         {
-            System.out.println("Item = " +
+            System.out.println("Item = " + 
             DatabaseItem.getItemFromID(tempID).getName());
-            System.out.println("Price = " +
+            System.out.println("Price = " + 
             DatabaseItem.getItemFromID(tempID).getPrice());
-            System.out.println("Supplier ID = " +
+            System.out.println("Supplier ID = " + 
             DatabaseItem.getItemFromID(tempID).getSupplier().getId());
-            System.out.println("Supplier Name = " +
+            System.out.println("Supplier name = " + 
             DatabaseItem.getItemFromID(tempID).getSupplier().getName());
         }
-        System.out.println("Buy date = " + dateFormat.format(super.getDate().getTime()));
+        System.out.println("Buy date = " + getDate());
         System.out.println("Price total = " + super.getTotalPrice());
         System.out.println("Installment price = " + installmentPrice);
         System.out.println("Customer ID = " + customer.getId());
